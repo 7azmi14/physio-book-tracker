@@ -51,10 +51,14 @@ class SiteItem:
     def cover_url(self) -> str | None:
         # OpenLibrary's cover API is a free, keyless, ISBN-keyed image CDN —
         # no build-time API call needed, the browser just requests it
-        # directly. Missing covers are handled client-side (see book_cover
-        # onerror in the templates), since OpenLibrary doesn't cover every
-        # ISBN, especially very recent ones.
-        return f"https://covers.openlibrary.org/b/isbn/{self.isbn13}-M.jpg" if self.isbn13 else None
+        # directly. default=false makes a missing cover 404 instead of
+        # returning a blank 1x1 placeholder image, so the onerror handler
+        # in the templates can actually detect and hide it — OpenLibrary
+        # doesn't have cover art for every ISBN, especially niche academic
+        # titles and very recent releases.
+        if not self.isbn13:
+            return None
+        return f"https://covers.openlibrary.org/b/isbn/{self.isbn13}-M.jpg?default=false"
 
     @property
     def share_link(self) -> str | None:

@@ -19,7 +19,7 @@ def make_item(**kwargs) -> SiteItem:
 
 def test_cover_url_uses_isbn13():
     item = make_item(isbn13="9780443128646")
-    assert item.cover_url == "https://covers.openlibrary.org/b/isbn/9780443128646-M.jpg"
+    assert item.cover_url == "https://covers.openlibrary.org/b/isbn/9780443128646-M.jpg?default=false"
 
 
 def test_cover_url_none_without_isbn():
