@@ -147,6 +147,34 @@ subtitle, and description text (`"8th edition"`, `"8th ed."`, `"8e"`,
    the tracking cycle, commits `state.json` and `site/` back to the repo,
    and deploys to Pages.
 
+## Optional: also deploy to Cloudflare Pages (clean URL, no username)
+
+`https://<you>.github.io/physio-book-tracker/` has your GitHub username in
+it. `https://physio-book-tracker.pages.dev` doesn't — same free hosting
+idea, project-name-based subdomain instead. The workflow already has a
+step for this; it just no-ops (fails that one step only, doesn't break the
+run) until you do the one-time setup:
+
+1. Sign up free at [dash.cloudflare.com](https://dash.cloudflare.com).
+2. **Workers & Pages → Create → Pages → Direct Upload.** Name the project
+   `physio-book-tracker` (this becomes the subdomain) and upload anything
+   as a placeholder first deploy — the workflow will overwrite it going
+   forward.
+3. **My Profile → API Tokens → Create Token**, using the "Edit Cloudflare
+   Workers" template or a custom token with **Account → Cloudflare Pages →
+   Edit** permission.
+4. Copy your **Account ID** from the right sidebar of the dashboard's
+   Overview page.
+5. In the GitHub repo, **Settings → Secrets and variables → Actions**, add
+   `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` with those two values.
+6. Trigger the workflow once (Actions tab → Run workflow). After it
+   succeeds, the site is live at `https://physio-book-tracker.pages.dev`.
+7. Update `site.base_url` in `config.yaml` to that URL so the RSS/JSON
+   feeds and email link point at the clean one instead of the GitHub one.
+
+GitHub Pages keeps working the whole time — this just adds a second,
+nicer-looking mirror of the same site.
+
 ## Project layout
 
 ```
