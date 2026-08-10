@@ -5,11 +5,11 @@
 <a class="back-link" href="../index.html">&larr; Back to all books</a>
 
 <div class="book-detail">
-  <div class="card-row">
+  <div class="row" style="border-bottom:none;">
     {{ m.cover(item, large=True) }}
-    <div class="card-body">
-      {% if item.is_new_edition %}<span class="badge">New edition</span>{% endif %}
-      <h2 style="margin-top:.5rem;">{{ item.title }}{% if item.subtitle %}: {{ item.subtitle }}{% endif %}</h2>
+    <div class="row-body">
+      {% if item.is_new_edition %}<div class="row-tag" style="margin-bottom:.3rem;">New edition</div>{% endif %}
+      <h2 style="margin:0 0 .5rem;font-size:1.15rem;">{{ item.title }}{% if item.subtitle %}: {{ item.subtitle }}{% endif %}</h2>
 
       <dl>
         <dt>Authors</dt><dd>{{ item.authors|join(", ") if item.authors else "Not listed" }}</dd>
@@ -24,11 +24,11 @@
         {% if item.tags %}<dt>Subspecialty</dt><dd>{{ item.tags|join(", ")|title }}</dd>{% endif %}
       </dl>
 
-      <div class="actions">
+      <p style="margin-top:1rem;">
         {% if item.url %}<a href="{{ item.url }}" target="_blank" rel="noopener">View at publisher / source &rarr;</a>{% endif %}
-      </div>
-      <div class="actions">{{ m.tweet_button(item) }}</div>
+      </p>
     </div>
+    {{ m.share_button(item) }}
   </div>
 </div>
 {% endblock %}

@@ -152,6 +152,7 @@ def build_site(
         "generated_at": generated_at,
         "total_known": len(items),
         "actions_url": actions_url,
+        "github_repo": config.site_github_repo or None,
     }
 
     index_html = env.get_template("index.html").render(

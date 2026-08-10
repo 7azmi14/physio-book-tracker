@@ -6,93 +6,62 @@
 {% if actions_url %}
 <div class="update-box">
   <a class="update-btn" href="{{ actions_url }}" target="_blank" rel="noopener">🔄 Update Me</a>
-  <p class="update-help">
-    Opens GitHub — click the green <strong>Run workflow</strong> button there to confirm
-    (that last click has to happen on GitHub itself, it's what keeps this button safe to
-    put on a public page). Takes about a minute, then reload this page.
-  </p>
-  <p class="update-help">Site last generated {{ generated_at }}.</p>
+  <p class="update-help">Opens GitHub — click "Run workflow" there to confirm, then reload this page in about a minute.</p>
 </div>
 {% endif %}
 
-<h2 class="section">New editions of your reference texts ({{ new_editions|length }})</h2>
 {% if new_editions %}
-  {% for item in new_editions %}
-  <div class="card edition">
-    <div class="card-row">
-      {{ m.cover(item) }}
-      <div class="card-body">
-        <span class="badge">New edition</span>
-        <h3><a href="books/{{ item.slug }}.html">{{ item.title }}{% if item.subtitle %}: {{ item.subtitle }}{% endif %}</a></h3>
-        <div class="meta">{{ item.watchlist_short_title }} &mdash; edition {{ item.edition }} (you have {{ item.watchlist_current_edition }})</div>
-        <div class="meta">{{ item.authors|join(", ") if item.authors else "No author listed" }} &middot; {{ item.publisher or "?" }} &middot; {{ item.published_date or "?" }}</div>
-        <div class="actions">{{ m.tweet_button(item) }}</div>
-      </div>
-    </div>
+<h2 class="section">New editions of your reference texts</h2>
+{% for item in new_editions %}
+<div class="row edition">
+  {{ m.cover(item) }}
+  <div class="row-body">
+    <h3><a href="books/{{ item.slug }}.html">{{ item.title }}{% if item.subtitle %}: {{ item.subtitle }}{% endif %}</a></h3>
+    <div class="row-meta"><span class="row-tag">{{ item.watchlist_short_title }}</span> &middot; edition {{ item.edition }}, you have {{ item.watchlist_current_edition }}</div>
+    <div class="row-meta">{{ item.authors|join(", ") if item.authors else "No author listed" }} &middot; {{ item.publisher or "?" }} &middot; {{ item.published_date or "?" }}</div>
   </div>
-  {% endfor %}
-{% else %}
-  <p class="empty">No newer editions of your watchlist texts found yet.</p>
+  {{ m.share_button(item) }}
+</div>
+{% endfor %}
 {% endif %}
 
-<h2 class="section">Recent releases ({{ items|length }})</h2>
-<div class="filters" id="filters">
-  <label><input type="checkbox" class="filter-all" checked> All</label>
+<h2 class="section">Recent releases</h2>
+{% if all_tags|length > 1 %}
+<select class="filter-select" id="filter-select">
+  <option value="">All subspecialties</option>
   {% for tag in all_tags %}
-  <label><input type="checkbox" class="filter-tag" value="{{ tag }}"> {{ tag|title }}</label>
+  <option value="{{ tag }}">{{ tag|title }}</option>
   {% endfor %}
-</div>
+</select>
+{% endif %}
 
 <div id="book-list">
 {% if items %}
   {% for item in items %}
-  <div class="card" data-tags="{{ item.tags|join(' ') }}">
-    <div class="card-row">
-      {{ m.cover(item) }}
-      <div class="card-body">
-        {% if item.is_new_edition %}<span class="badge">New edition</span>{% endif %}
-        <h3><a href="books/{{ item.slug }}.html">{{ item.title }}{% if item.subtitle %}: {{ item.subtitle }}{% endif %}</a></h3>
-        <div class="meta">{{ item.authors|join(", ") if item.authors else "No author listed" }}</div>
-        <div class="meta">{{ item.publisher or "?" }} &middot; {{ item.published_date or "?" }} &middot; first seen {{ item.first_seen }}</div>
-        <div class="actions">{{ m.tweet_button(item) }}</div>
-      </div>
+  <div class="row" data-tags="{{ item.tags|join(' ') }}">
+    {{ m.cover(item) }}
+    <div class="row-body">
+      <h3><a href="books/{{ item.slug }}.html">{{ item.title }}{% if item.subtitle %}: {{ item.subtitle }}{% endif %}</a></h3>
+      <div class="row-meta">{{ item.authors|join(", ") if item.authors else "No author listed" }} &middot; {{ item.publisher or "?" }} &middot; {{ item.published_date or "?" }}</div>
     </div>
+    {{ m.share_button(item) }}
   </div>
   {% endfor %}
 {% else %}
-  <p class="empty">Nothing tracked yet &mdash; run a cycle to populate this page.</p>
+  <p class="empty">Nothing tracked yet.</p>
 {% endif %}
 </div>
 
 <script>
 (function () {
-  var checkboxes = Array.prototype.slice.call(document.querySelectorAll('.filter-tag'));
-  var allBox = document.querySelector('.filter-all');
-  var cards = Array.prototype.slice.call(document.querySelectorAll('#book-list .card'));
-
-  function apply() {
-    var active = checkboxes.filter(function (c) { return c.checked; }).map(function (c) { return c.value; });
-    if (active.length === 0) {
-      cards.forEach(function (c) { c.style.display = ''; });
-      return;
-    }
-    cards.forEach(function (c) {
-      var tags = (c.getAttribute('data-tags') || '').split(' ');
-      var match = tags.some(function (t) { return active.indexOf(t) !== -1; });
-      c.style.display = match ? '' : 'none';
-    });
-  }
-
-  allBox.addEventListener('change', function () {
-    if (allBox.checked) {
-      checkboxes.forEach(function (c) { c.checked = false; });
-      apply();
-    }
-  });
-  checkboxes.forEach(function (c) {
-    c.addEventListener('change', function () {
-      if (c.checked) allBox.checked = false;
-      apply();
+  var select = document.getElementById('filter-select');
+  if (!select) return;
+  var rows = Array.prototype.slice.call(document.querySelectorAll('#book-list .row'));
+  select.addEventListener('change', function () {
+    var value = select.value;
+    rows.forEach(function (row) {
+      var tags = (row.getAttribute('data-tags') || '').split(' ');
+      row.style.display = (!value || tags.indexOf(value) !== -1) ? '' : 'none';
     });
   });
 })();

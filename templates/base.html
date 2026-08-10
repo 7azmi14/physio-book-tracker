@@ -37,113 +37,108 @@
     margin: 0;
     background: var(--bg);
     color: var(--fg);
-    font: 17px/1.55 -apple-system, "Segoe UI", Georgia, "Iowan Old Style", serif;
+    font: 16px/1.5 -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
   }
   a { color: var(--accent); }
-  .wrap { max-width: 760px; margin: 0 auto; padding: 1.5rem 1.25rem 4rem; }
-  header.site { border-bottom: 1px solid var(--border); margin-bottom: 1.5rem; padding-bottom: 1rem; }
-  header.site h1 { font-size: 1.5rem; margin: 0 0 .25rem; }
-  header.site .tagline { color: var(--muted); font-size: .95rem; }
-  header.site nav { margin-top: .75rem; font-size: .9rem; }
-  header.site nav a { margin-right: 1rem; }
-  footer.site { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--muted); font-size: .85rem; }
-  h2.section { font-size: 1.1rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 2rem 0 .75rem; }
-  .card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1rem 1.15rem;
-    margin-bottom: .85rem;
+  .wrap { max-width: 640px; margin: 0 auto; padding: 2rem 1.25rem 3rem; }
+
+  header.site {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: .4rem 1rem;
+    margin-bottom: 1.75rem;
   }
-  .card.edition { background: var(--edition-bg); border-color: var(--edition-border); }
-  .card h3 { margin: 0 0 .25rem; font-size: 1.08rem; line-height: 1.35; }
-  .card h3 a { text-decoration: none; color: var(--fg); }
-  .card h3 a:hover { text-decoration: underline; }
-  .card .meta { color: var(--muted); font-size: .88rem; margin: .15rem 0; }
-  .badge {
-    display: inline-block;
-    background: var(--accent-bg);
-    color: var(--accent);
-    font-size: .72rem;
-    font-weight: 600;
-    letter-spacing: .03em;
-    text-transform: uppercase;
-    padding: .15rem .5rem;
-    border-radius: 999px;
-    margin-right: .35rem;
+  header.site h1 { font-size: 1.25rem; margin: 0; }
+  header.site h1 a { text-decoration: none; color: inherit; }
+  header.site nav { font-size: .82rem; color: var(--muted); }
+  header.site nav a { color: var(--muted); text-decoration: none; margin-left: .9rem; }
+  header.site nav a:hover { color: var(--accent); }
+
+  footer.site {
+    margin-top: 2.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: .8rem;
   }
-  .empty { color: var(--muted); font-style: italic; padding: .5rem 0; }
-  .filters { display: flex; flex-wrap: wrap; gap: .4rem; margin: .5rem 0 1.5rem; }
-  .filters label {
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    padding: .3rem .7rem;
-    font-size: .85rem;
-    cursor: pointer;
-    user-select: none;
-  }
-  .filters input { margin-right: .35rem; }
-  .card-row { display: flex; gap: .9rem; align-items: flex-start; }
-  .cover-link { flex: 0 0 auto; line-height: 0; }
-  .cover { width: 64px; height: auto; border-radius: 4px; border: 1px solid var(--border); display: block; background: var(--accent-bg); }
-  .cover-large { width: 140px; }
-  .card-body { flex: 1 1 auto; min-width: 0; }
-  .actions { margin-top: .55rem; }
-  .tweet-btn {
-    display: inline-flex;
+  footer.site a { color: var(--muted); }
+
+  h2.section { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 600; margin: 2rem 0 .6rem; }
+  .empty { color: var(--muted); font-size: .92rem; padding: .25rem 0; }
+
+  /* Compact, borderless rows instead of boxed cards — a plain divider does
+     the separating, so a long list stays calm rather than busy. */
+  .row { display: flex; gap: .75rem; align-items: flex-start; padding: .7rem 0; border-bottom: 1px solid var(--border); }
+  .row:last-child { border-bottom: none; }
+  .row.edition { border-left: 3px solid var(--accent); padding-left: .65rem; }
+  .row-cover { flex: 0 0 auto; line-height: 0; }
+  .cover { width: 40px; height: auto; border-radius: 3px; display: block; background: var(--accent-bg); }
+  .cover-large { width: 120px; }
+  .row-body { flex: 1 1 auto; min-width: 0; }
+  .row-body h3 { margin: 0; font-size: .98rem; font-weight: 600; line-height: 1.35; }
+  .row-body h3 a { text-decoration: none; color: var(--fg); }
+  .row-body h3 a:hover { color: var(--accent); }
+  .row-meta { color: var(--muted); font-size: .82rem; margin-top: .15rem; }
+  .row-tag { color: var(--accent); font-weight: 600; }
+
+  .share-btn {
+    flex: 0 0 auto;
+    display: flex;
     align-items: center;
-    gap: .35rem;
-    font-size: .78rem;
-    font-weight: 600;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    color: var(--muted);
+    text-decoration: none;
+    align-self: center;
+  }
+  .share-btn:hover { color: var(--accent); background: var(--accent-bg); }
+  .share-btn svg { width: 12px; height: 12px; fill: currentColor; }
+
+  select.filter-select {
+    font: inherit;
+    font-size: .85rem;
     color: var(--fg);
     background: var(--card-bg);
     border: 1px solid var(--border);
-    border-radius: 999px;
-    padding: .3rem .65rem;
-    text-decoration: none;
+    border-radius: 6px;
+    padding: .3rem .5rem;
+    margin-bottom: .5rem;
   }
-  .tweet-btn:hover { border-color: var(--accent); color: var(--accent); }
-  .tweet-btn svg { width: 12px; height: 12px; fill: currentColor; }
-  .update-box {
-    text-align: center;
-    background: var(--accent-bg);
-    border: 1px solid var(--accent);
-    border-radius: 14px;
-    padding: 1.5rem 1.25rem;
-    margin-bottom: 1.5rem;
-  }
+
+  .update-box { margin-bottom: 1.5rem; }
   .update-btn {
     display: inline-block;
     background: var(--accent);
     color: var(--bg);
-    font-size: 1.1rem;
-    font-weight: 700;
+    font-size: .95rem;
+    font-weight: 600;
     text-decoration: none;
-    padding: .75rem 1.75rem;
-    border-radius: 999px;
+    padding: .55rem 1.15rem;
+    border-radius: 8px;
   }
   .update-btn:hover { opacity: 0.9; }
-  .update-help {
-    color: var(--muted);
-    font-size: .82rem;
-    margin: .6rem 0 0;
-  }
-  .book-detail dl { display: grid; grid-template-columns: auto 1fr; gap: .3rem 1rem; font-size: .95rem; }
+  .update-help { color: var(--muted); font-size: .78rem; margin: .5rem 0 0; }
+
+  .book-detail dl { display: grid; grid-template-columns: auto 1fr; gap: .3rem 1rem; font-size: .92rem; }
   .book-detail dt { color: var(--muted); }
-  .back-link { display: inline-block; margin-bottom: 1rem; font-size: .9rem; }
+  .back-link { display: inline-block; margin-bottom: 1rem; font-size: .85rem; color: var(--muted); text-decoration: none; }
+  .back-link:hover { color: var(--accent); }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header class="site">
-    <h1><a href="index.html" style="text-decoration:none;color:inherit;">{{ site_title }}</a></h1>
-    <div class="tagline">Tracking new physiotherapy &amp; rehabilitation books, and new editions of the texts you already use.</div>
-    <nav><a href="index.html">Home</a><a href="feed.xml">RSS</a><a href="feed.json">JSON Feed</a></nav>
+    <h1><a href="index.html">{{ site_title }}</a></h1>
+    <nav><a href="feed.xml">RSS</a><a href="feed.json">JSON</a></nav>
   </header>
   {% block content %}{% endblock %}
   <footer class="site">
-    Generated {{ generated_at }} &middot; {{ total_known }} books tracked in total &middot;
-    <a href="https://github.com/" target="_blank" rel="noopener">source</a>
+    Updated {{ generated_at }} &middot; {{ total_known }} books tracked
+    {% if github_repo %} &middot; <a href="https://github.com/{{ github_repo }}" target="_blank" rel="noopener">source</a>{% endif %}
   </footer>
 </div>
 </body>

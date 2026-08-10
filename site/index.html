@@ -37,739 +37,613 @@
     margin: 0;
     background: var(--bg);
     color: var(--fg);
-    font: 17px/1.55 -apple-system, "Segoe UI", Georgia, "Iowan Old Style", serif;
+    font: 16px/1.5 -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
   }
   a { color: var(--accent); }
-  .wrap { max-width: 760px; margin: 0 auto; padding: 1.5rem 1.25rem 4rem; }
-  header.site { border-bottom: 1px solid var(--border); margin-bottom: 1.5rem; padding-bottom: 1rem; }
-  header.site h1 { font-size: 1.5rem; margin: 0 0 .25rem; }
-  header.site .tagline { color: var(--muted); font-size: .95rem; }
-  header.site nav { margin-top: .75rem; font-size: .9rem; }
-  header.site nav a { margin-right: 1rem; }
-  footer.site { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--muted); font-size: .85rem; }
-  h2.section { font-size: 1.1rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 2rem 0 .75rem; }
-  .card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1rem 1.15rem;
-    margin-bottom: .85rem;
+  .wrap { max-width: 640px; margin: 0 auto; padding: 2rem 1.25rem 3rem; }
+
+  header.site {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: .4rem 1rem;
+    margin-bottom: 1.75rem;
   }
-  .card.edition { background: var(--edition-bg); border-color: var(--edition-border); }
-  .card h3 { margin: 0 0 .25rem; font-size: 1.08rem; line-height: 1.35; }
-  .card h3 a { text-decoration: none; color: var(--fg); }
-  .card h3 a:hover { text-decoration: underline; }
-  .card .meta { color: var(--muted); font-size: .88rem; margin: .15rem 0; }
-  .badge {
-    display: inline-block;
-    background: var(--accent-bg);
-    color: var(--accent);
-    font-size: .72rem;
-    font-weight: 600;
-    letter-spacing: .03em;
-    text-transform: uppercase;
-    padding: .15rem .5rem;
-    border-radius: 999px;
-    margin-right: .35rem;
+  header.site h1 { font-size: 1.25rem; margin: 0; }
+  header.site h1 a { text-decoration: none; color: inherit; }
+  header.site nav { font-size: .82rem; color: var(--muted); }
+  header.site nav a { color: var(--muted); text-decoration: none; margin-left: .9rem; }
+  header.site nav a:hover { color: var(--accent); }
+
+  footer.site {
+    margin-top: 2.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: .8rem;
   }
-  .empty { color: var(--muted); font-style: italic; padding: .5rem 0; }
-  .filters { display: flex; flex-wrap: wrap; gap: .4rem; margin: .5rem 0 1.5rem; }
-  .filters label {
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    padding: .3rem .7rem;
-    font-size: .85rem;
-    cursor: pointer;
-    user-select: none;
-  }
-  .filters input { margin-right: .35rem; }
-  .card-row { display: flex; gap: .9rem; align-items: flex-start; }
-  .cover-link { flex: 0 0 auto; line-height: 0; }
-  .cover { width: 64px; height: auto; border-radius: 4px; border: 1px solid var(--border); display: block; background: var(--accent-bg); }
-  .cover-large { width: 140px; }
-  .card-body { flex: 1 1 auto; min-width: 0; }
-  .actions { margin-top: .55rem; }
-  .tweet-btn {
-    display: inline-flex;
+  footer.site a { color: var(--muted); }
+
+  h2.section { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 600; margin: 2rem 0 .6rem; }
+  .empty { color: var(--muted); font-size: .92rem; padding: .25rem 0; }
+
+  /* Compact, borderless rows instead of boxed cards — a plain divider does
+     the separating, so a long list stays calm rather than busy. */
+  .row { display: flex; gap: .75rem; align-items: flex-start; padding: .7rem 0; border-bottom: 1px solid var(--border); }
+  .row:last-child { border-bottom: none; }
+  .row.edition { border-left: 3px solid var(--accent); padding-left: .65rem; }
+  .row-cover { flex: 0 0 auto; line-height: 0; }
+  .cover { width: 40px; height: auto; border-radius: 3px; display: block; background: var(--accent-bg); }
+  .cover-large { width: 120px; }
+  .row-body { flex: 1 1 auto; min-width: 0; }
+  .row-body h3 { margin: 0; font-size: .98rem; font-weight: 600; line-height: 1.35; }
+  .row-body h3 a { text-decoration: none; color: var(--fg); }
+  .row-body h3 a:hover { color: var(--accent); }
+  .row-meta { color: var(--muted); font-size: .82rem; margin-top: .15rem; }
+  .row-tag { color: var(--accent); font-weight: 600; }
+
+  .share-btn {
+    flex: 0 0 auto;
+    display: flex;
     align-items: center;
-    gap: .35rem;
-    font-size: .78rem;
-    font-weight: 600;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    color: var(--muted);
+    text-decoration: none;
+    align-self: center;
+  }
+  .share-btn:hover { color: var(--accent); background: var(--accent-bg); }
+  .share-btn svg { width: 12px; height: 12px; fill: currentColor; }
+
+  select.filter-select {
+    font: inherit;
+    font-size: .85rem;
     color: var(--fg);
     background: var(--card-bg);
     border: 1px solid var(--border);
-    border-radius: 999px;
-    padding: .3rem .65rem;
-    text-decoration: none;
+    border-radius: 6px;
+    padding: .3rem .5rem;
+    margin-bottom: .5rem;
   }
-  .tweet-btn:hover { border-color: var(--accent); color: var(--accent); }
-  .tweet-btn svg { width: 12px; height: 12px; fill: currentColor; }
-  .update-box {
-    text-align: center;
-    background: var(--accent-bg);
-    border: 1px solid var(--accent);
-    border-radius: 14px;
-    padding: 1.5rem 1.25rem;
-    margin-bottom: 1.5rem;
-  }
+
+  .update-box { margin-bottom: 1.5rem; }
   .update-btn {
     display: inline-block;
     background: var(--accent);
     color: var(--bg);
-    font-size: 1.1rem;
-    font-weight: 700;
+    font-size: .95rem;
+    font-weight: 600;
     text-decoration: none;
-    padding: .75rem 1.75rem;
-    border-radius: 999px;
+    padding: .55rem 1.15rem;
+    border-radius: 8px;
   }
   .update-btn:hover { opacity: 0.9; }
-  .update-help {
-    color: var(--muted);
-    font-size: .82rem;
-    margin: .6rem 0 0;
-  }
-  .book-detail dl { display: grid; grid-template-columns: auto 1fr; gap: .3rem 1rem; font-size: .95rem; }
+  .update-help { color: var(--muted); font-size: .78rem; margin: .5rem 0 0; }
+
+  .book-detail dl { display: grid; grid-template-columns: auto 1fr; gap: .3rem 1rem; font-size: .92rem; }
   .book-detail dt { color: var(--muted); }
-  .back-link { display: inline-block; margin-bottom: 1rem; font-size: .9rem; }
+  .back-link { display: inline-block; margin-bottom: 1rem; font-size: .85rem; color: var(--muted); text-decoration: none; }
+  .back-link:hover { color: var(--accent); }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header class="site">
-    <h1><a href="index.html" style="text-decoration:none;color:inherit;">Physio Book Tracker</a></h1>
-    <div class="tagline">Tracking new physiotherapy &amp; rehabilitation books, and new editions of the texts you already use.</div>
-    <nav><a href="index.html">Home</a><a href="feed.xml">RSS</a><a href="feed.json">JSON Feed</a></nav>
+    <h1><a href="index.html">Physio Book Tracker</a></h1>
+    <nav><a href="feed.xml">RSS</a><a href="feed.json">JSON</a></nav>
   </header>
   
 
 
 <div class="update-box">
   <a class="update-btn" href="https://github.com/7azmi14/physio-book-tracker/actions/workflows/monthly.yml" target="_blank" rel="noopener">🔄 Update Me</a>
-  <p class="update-help">
-    Opens GitHub — click the green <strong>Run workflow</strong> button there to confirm
-    (that last click has to happen on GitHub itself, it's what keeps this button safe to
-    put on a public page). Takes about a minute, then reload this page.
-  </p>
-  <p class="update-help">Site last generated 2026-08-10 16:47 UTC.</p>
+  <p class="update-help">Opens GitHub — click "Run workflow" there to confirm, then reload this page in about a minute.</p>
 </div>
 
 
-<h2 class="section">New editions of your reference texts (0)</h2>
-
-  <p class="empty">No newer editions of your watchlist texts found yet.</p>
 
 
-<h2 class="section">Recent releases (23)</h2>
-<div class="filters" id="filters">
-  <label><input type="checkbox" class="filter-all" checked> All</label>
+<h2 class="section">Recent releases</h2>
+
+<select class="filter-select" id="filter-select">
+  <option value="">All subspecialties</option>
   
-  <label><input type="checkbox" class="filter-tag" value="cardiopulmonary rehabilitation"> Cardiopulmonary Rehabilitation</label>
+  <option value="cardiopulmonary rehabilitation">Cardiopulmonary Rehabilitation</option>
   
-  <label><input type="checkbox" class="filter-tag" value="clinical reasoning"> Clinical Reasoning</label>
+  <option value="clinical reasoning">Clinical Reasoning</option>
   
-  <label><input type="checkbox" class="filter-tag" value="exercise prescription"> Exercise Prescription</label>
+  <option value="exercise prescription">Exercise Prescription</option>
   
-  <label><input type="checkbox" class="filter-tag" value="general"> General</label>
+  <option value="general">General</option>
   
-  <label><input type="checkbox" class="filter-tag" value="manual therapy"> Manual Therapy</label>
+  <option value="manual therapy">Manual Therapy</option>
   
-  <label><input type="checkbox" class="filter-tag" value="musculoskeletal"> Musculoskeletal</label>
+  <option value="musculoskeletal">Musculoskeletal</option>
   
-</div>
+</select>
+
 
 <div id="book-list">
 
   
-  <div class="card" data-tags="general">
-    <div class="card-row">
-      
+  <div class="row" data-tags="general">
+    
 
-<a class="cover-link" href="https://doi.org/10.1201/9781003612407" target="_blank" rel="noopener">
+<a class="row-cover cover-link" href="https://doi.org/10.1201/9781003612407" target="_blank" rel="noopener">
   <img class="cover" src="https://covers.openlibrary.org/b/isbn/9781003612407-M.jpg?default=false"
        alt="Cover of Trauma Rehabilitation Medicine" loading="lazy"
        onerror="this.closest('.cover-link').style.display='none'">
 </a>
 
 
-      <div class="card-body">
-        
-        <h3><a href="books/36fe4dbc1c9e4c2d.html">Trauma Rehabilitation Medicine</a></h3>
-        <div class="meta">John Etherington</div>
-        <div class="meta">CRC Press &middot; 2026-08-05 &middot; first seen 2026-08-10</div>
-        <div class="actions">
-<a class="tweet-btn" href="https://twitter.com/intent/tweet?text=Trauma+Rehabilitation+Medicine+by+John+Etherington+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.1201%2F9781003612407" target="_blank" rel="noopener" title="Share on X">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
-  Share on X
-</a>
-</div>
-      </div>
+    <div class="row-body">
+      <h3><a href="books/36fe4dbc1c9e4c2d.html">Trauma Rehabilitation Medicine</a></h3>
+      <div class="row-meta">John Etherington &middot; CRC Press &middot; 2026-08-05</div>
     </div>
+    
+<a class="share-btn" href="https://twitter.com/intent/tweet?text=Trauma+Rehabilitation+Medicine+by+John+Etherington+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.1201%2F9781003612407" target="_blank" rel="noopener" title="Share on X" aria-label="Share on X">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
+</a>
+
   </div>
   
-  <div class="card" data-tags="musculoskeletal">
-    <div class="card-row">
-      
+  <div class="row" data-tags="musculoskeletal">
+    
 
-<a class="cover-link" href="https://doi.org/10.1093/med/9780198854166.001.0001" target="_blank" rel="noopener">
+<a class="row-cover cover-link" href="https://doi.org/10.1093/med/9780198854166.001.0001" target="_blank" rel="noopener">
   <img class="cover" src="https://covers.openlibrary.org/b/isbn/9780198854166-M.jpg?default=false"
        alt="Cover of Oxford Handbook of Sport &amp; Exercise Medicine" loading="lazy"
        onerror="this.closest('.cover-link').style.display='none'">
 </a>
 
 
-      <div class="card-body">
-        
-        <h3><a href="books/2625b12586842b0a.html">Oxford Handbook of Sport &amp; Exercise Medicine</a></h3>
-        <div class="meta">No author listed</div>
-        <div class="meta">Oxford University PressOxford &middot; 2026-08-01 &middot; first seen 2026-08-10</div>
-        <div class="actions">
-<a class="tweet-btn" href="https://twitter.com/intent/tweet?text=Oxford+Handbook+of+Sport+%26+Exercise+Medicine+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.1093%2Fmed%2F9780198854166.001.0001" target="_blank" rel="noopener" title="Share on X">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
-  Share on X
-</a>
-</div>
-      </div>
+    <div class="row-body">
+      <h3><a href="books/2625b12586842b0a.html">Oxford Handbook of Sport &amp; Exercise Medicine</a></h3>
+      <div class="row-meta">No author listed &middot; Oxford University PressOxford &middot; 2026-08-01</div>
     </div>
+    
+<a class="share-btn" href="https://twitter.com/intent/tweet?text=Oxford+Handbook+of+Sport+%26+Exercise+Medicine+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.1093%2Fmed%2F9780198854166.001.0001" target="_blank" rel="noopener" title="Share on X" aria-label="Share on X">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
+</a>
+
   </div>
   
-  <div class="card" data-tags="general">
-    <div class="card-row">
-      
+  <div class="row" data-tags="general">
+    
 
-<a class="cover-link" href="https://doi.org/10.4324/9781003604624" target="_blank" rel="noopener">
+<a class="row-cover cover-link" href="https://doi.org/10.4324/9781003604624" target="_blank" rel="noopener">
   <img class="cover" src="https://covers.openlibrary.org/b/isbn/9781003604624-M.jpg?default=false"
        alt="Cover of Rehabilitation Techniques for Sports Medicine and Athletic Training" loading="lazy"
        onerror="this.closest('.cover-link').style.display='none'">
 </a>
 
 
-      <div class="card-body">
-        
-        <h3><a href="books/d88168e1bc91ea4e.html">Rehabilitation Techniques for Sports Medicine and Athletic Training</a></h3>
-        <div class="meta">William E. Prentice, Linda Stark Bobo, Amanda Benson</div>
-        <div class="meta">Routledge &middot; 2026-07-30 &middot; first seen 2026-08-10</div>
-        <div class="actions">
-<a class="tweet-btn" href="https://twitter.com/intent/tweet?text=Rehabilitation+Techniques+for+Sports+Medicine+and+Athletic+Training+by+William+E.+Prentice%2C+Linda+Stark+Bobo+et+al.+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.4324%2F9781003604624" target="_blank" rel="noopener" title="Share on X">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
-  Share on X
-</a>
-</div>
-      </div>
+    <div class="row-body">
+      <h3><a href="books/d88168e1bc91ea4e.html">Rehabilitation Techniques for Sports Medicine and Athletic Training</a></h3>
+      <div class="row-meta">William E. Prentice, Linda Stark Bobo, Amanda Benson &middot; Routledge &middot; 2026-07-30</div>
     </div>
+    
+<a class="share-btn" href="https://twitter.com/intent/tweet?text=Rehabilitation+Techniques+for+Sports+Medicine+and+Athletic+Training+by+William+E.+Prentice%2C+Linda+Stark+Bobo+et+al.+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.4324%2F9781003604624" target="_blank" rel="noopener" title="Share on X" aria-label="Share on X">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
+</a>
+
   </div>
   
-  <div class="card" data-tags="general">
-    <div class="card-row">
-      
+  <div class="row" data-tags="general">
+    
 
-<a class="cover-link" href="https://doi.org/10.3390/books978-3-7258-8266-3" target="_blank" rel="noopener">
+<a class="row-cover cover-link" href="https://doi.org/10.3390/books978-3-7258-8266-3" target="_blank" rel="noopener">
   <img class="cover" src="https://covers.openlibrary.org/b/isbn/9783725882663-M.jpg?default=false"
        alt="Cover of Recent Clinical Advances in Cardiac Rehabilitation" loading="lazy"
        onerror="this.closest('.cover-link').style.display='none'">
 </a>
 
 
-      <div class="card-body">
-        
-        <h3><a href="books/2e735ef93e3adb2b.html">Recent Clinical Advances in Cardiac Rehabilitation</a></h3>
-        <div class="meta">No author listed</div>
-        <div class="meta">MDPI &middot; 2026-07-13 &middot; first seen 2026-08-10</div>
-        <div class="actions">
-<a class="tweet-btn" href="https://twitter.com/intent/tweet?text=Recent+Clinical+Advances+in+Cardiac+Rehabilitation+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.3390%2Fbooks978-3-7258-8266-3" target="_blank" rel="noopener" title="Share on X">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
-  Share on X
-</a>
-</div>
-      </div>
+    <div class="row-body">
+      <h3><a href="books/2e735ef93e3adb2b.html">Recent Clinical Advances in Cardiac Rehabilitation</a></h3>
+      <div class="row-meta">No author listed &middot; MDPI &middot; 2026-07-13</div>
     </div>
+    
+<a class="share-btn" href="https://twitter.com/intent/tweet?text=Recent+Clinical+Advances+in+Cardiac+Rehabilitation+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.3390%2Fbooks978-3-7258-8266-3" target="_blank" rel="noopener" title="Share on X" aria-label="Share on X">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
+</a>
+
   </div>
   
-  <div class="card" data-tags="clinical reasoning musculoskeletal">
-    <div class="card-row">
-      
+  <div class="row" data-tags="clinical reasoning musculoskeletal">
+    
 
-<a class="cover-link" href="https://doi.org/10.24040/2026.9788055723341" target="_blank" rel="noopener">
+<a class="row-cover cover-link" href="https://doi.org/10.24040/2026.9788055723341" target="_blank" rel="noopener">
   <img class="cover" src="https://covers.openlibrary.org/b/isbn/9788055723341-M.jpg?default=false"
        alt="Cover of 2. InterRehab – Rehabilitation conference : collection of abstracts" loading="lazy"
        onerror="this.closest('.cover-link').style.display='none'">
 </a>
 
 
-      <div class="card-body">
-        
-        <h3><a href="books/83fda0bf38fe0ae6.html">2. InterRehab – Rehabilitation conference : collection of abstracts</a></h3>
-        <div class="meta">No author listed</div>
-        <div class="meta">Belianum. Matej Bel University Press &middot; 2026-06-16 &middot; first seen 2026-08-10</div>
-        <div class="actions">
-<a class="tweet-btn" href="https://twitter.com/intent/tweet?text=2.+InterRehab+%E2%80%93+Rehabilitation+conference+%3A+collection+of+abstracts+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.24040%2F2026.9788055723341" target="_blank" rel="noopener" title="Share on X">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
-  Share on X
-</a>
-</div>
-      </div>
+    <div class="row-body">
+      <h3><a href="books/83fda0bf38fe0ae6.html">2. InterRehab – Rehabilitation conference : collection of abstracts</a></h3>
+      <div class="row-meta">No author listed &middot; Belianum. Matej Bel University Press &middot; 2026-06-16</div>
     </div>
+    
+<a class="share-btn" href="https://twitter.com/intent/tweet?text=2.+InterRehab+%E2%80%93+Rehabilitation+conference+%3A+collection+of+abstracts+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.24040%2F2026.9788055723341" target="_blank" rel="noopener" title="Share on X" aria-label="Share on X">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
+</a>
+
   </div>
   
-  <div class="card" data-tags="general">
-    <div class="card-row">
-      
+  <div class="row" data-tags="general">
+    
 
-<a class="cover-link" href="https://doi.org/10.3390/books978-3-7258-7966-3" target="_blank" rel="noopener">
+<a class="row-cover cover-link" href="https://doi.org/10.3390/books978-3-7258-7966-3" target="_blank" rel="noopener">
   <img class="cover" src="https://covers.openlibrary.org/b/isbn/9783725879663-M.jpg?default=false"
        alt="Cover of Novel Approaches of Physical Therapy-Based Rehabilitation" loading="lazy"
        onerror="this.closest('.cover-link').style.display='none'">
 </a>
 
 
-      <div class="card-body">
-        
-        <h3><a href="books/84e5f6e895919ae3.html">Novel Approaches of Physical Therapy-Based Rehabilitation</a></h3>
-        <div class="meta">No author listed</div>
-        <div class="meta">MDPI &middot; 2026-06-12 &middot; first seen 2026-08-10</div>
-        <div class="actions">
-<a class="tweet-btn" href="https://twitter.com/intent/tweet?text=Novel+Approaches+of+Physical+Therapy-Based+Rehabilitation+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.3390%2Fbooks978-3-7258-7966-3" target="_blank" rel="noopener" title="Share on X">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
-  Share on X
-</a>
-</div>
-      </div>
+    <div class="row-body">
+      <h3><a href="books/84e5f6e895919ae3.html">Novel Approaches of Physical Therapy-Based Rehabilitation</a></h3>
+      <div class="row-meta">No author listed &middot; MDPI &middot; 2026-06-12</div>
     </div>
+    
+<a class="share-btn" href="https://twitter.com/intent/tweet?text=Novel+Approaches+of+Physical+Therapy-Based+Rehabilitation+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.3390%2Fbooks978-3-7258-7966-3" target="_blank" rel="noopener" title="Share on X" aria-label="Share on X">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
+</a>
+
   </div>
   
-  <div class="card" data-tags="general">
-    <div class="card-row">
-      
+  <div class="row" data-tags="general">
+    
 
-<a class="cover-link" href="https://doi.org/10.3384/9789181183818" target="_blank" rel="noopener">
+<a class="row-cover cover-link" href="https://doi.org/10.3384/9789181183818" target="_blank" rel="noopener">
   <img class="cover" src="https://covers.openlibrary.org/b/isbn/9789181183801-M.jpg?default=false"
        alt="Cover of Individuals with cervical radiculopathy and headache or dizziness : Outcomes of physiotherapy and/or surgical treatment" loading="lazy"
        onerror="this.closest('.cover-link').style.display='none'">
 </a>
 
 
-      <div class="card-body">
-        
-        <h3><a href="books/cf21ce6015d46140.html">Individuals with cervical radiculopathy and headache or dizziness : Outcomes of physiotherapy and/or surgical treatment</a></h3>
-        <div class="meta">Jard Svensson</div>
-        <div class="meta">Linköping University Electronic Press &middot; 2026-05-29 &middot; first seen 2026-08-10</div>
-        <div class="actions">
-<a class="tweet-btn" href="https://twitter.com/intent/tweet?text=Individuals+with+cervical+radiculopathy+and+headache+or+dizziness+%3A+Outcomes+of+physiotherapy+and%2For+surgical+treatment+by+Jard+Svensson+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.3384%2F9789181183818" target="_blank" rel="noopener" title="Share on X">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
-  Share on X
-</a>
-</div>
-      </div>
+    <div class="row-body">
+      <h3><a href="books/cf21ce6015d46140.html">Individuals with cervical radiculopathy and headache or dizziness : Outcomes of physiotherapy and/or surgical treatment</a></h3>
+      <div class="row-meta">Jard Svensson &middot; Linköping University Electronic Press &middot; 2026-05-29</div>
     </div>
+    
+<a class="share-btn" href="https://twitter.com/intent/tweet?text=Individuals+with+cervical+radiculopathy+and+headache+or+dizziness+%3A+Outcomes+of+physiotherapy+and%2For+surgical+treatment+by+Jard+Svensson+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.3384%2F9789181183818" target="_blank" rel="noopener" title="Share on X" aria-label="Share on X">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
+</a>
+
   </div>
   
-  <div class="card" data-tags="general">
-    <div class="card-row">
-      
+  <div class="row" data-tags="general">
+    
 
-<a class="cover-link" href="https://doi.org/10.12737/2227074" target="_blank" rel="noopener">
+<a class="row-cover cover-link" href="https://doi.org/10.12737/2227074" target="_blank" rel="noopener">
   <img class="cover" src="https://covers.openlibrary.org/b/isbn/9785160214849-M.jpg?default=false"
        alt="Cover of Psychological intervention (development, correction and rehabilitation)" loading="lazy"
        onerror="this.closest('.cover-link').style.display='none'">
 </a>
 
 
-      <div class="card-body">
-        
-        <h3><a href="books/babca5bbe6176811.html">Psychological intervention (development, correction and rehabilitation)</a></h3>
-        <div class="meta">Yuliya Karayani, Andrey Kiyko</div>
-        <div class="meta">INFRA-M Academic Publishing LLC. &middot; 2026-05-14 &middot; first seen 2026-08-10</div>
-        <div class="actions">
-<a class="tweet-btn" href="https://twitter.com/intent/tweet?text=Psychological+intervention+%28development%2C+correction+and+rehabilitation%29+by+Yuliya+Karayani%2C+Andrey+Kiyko+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.12737%2F2227074" target="_blank" rel="noopener" title="Share on X">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
-  Share on X
-</a>
-</div>
-      </div>
+    <div class="row-body">
+      <h3><a href="books/babca5bbe6176811.html">Psychological intervention (development, correction and rehabilitation)</a></h3>
+      <div class="row-meta">Yuliya Karayani, Andrey Kiyko &middot; INFRA-M Academic Publishing LLC. &middot; 2026-05-14</div>
     </div>
+    
+<a class="share-btn" href="https://twitter.com/intent/tweet?text=Psychological+intervention+%28development%2C+correction+and+rehabilitation%29+by+Yuliya+Karayani%2C+Andrey+Kiyko+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.12737%2F2227074" target="_blank" rel="noopener" title="Share on X" aria-label="Share on X">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
+</a>
+
   </div>
   
-  <div class="card" data-tags="general">
-    <div class="card-row">
-      
+  <div class="row" data-tags="general">
+    
 
-<a class="cover-link" href="https://doi.org/10.4324/9781003646358" target="_blank" rel="noopener">
+<a class="row-cover cover-link" href="https://doi.org/10.4324/9781003646358" target="_blank" rel="noopener">
   <img class="cover" src="https://covers.openlibrary.org/b/isbn/9781003646358-M.jpg?default=false"
        alt="Cover of Motivational Interviewing for Rehabilitation Clinicians" loading="lazy"
        onerror="this.closest('.cover-link').style.display='none'">
 </a>
 
 
-      <div class="card-body">
-        
-        <h3><a href="books/c3e70d5d7e45f934.html">Motivational Interviewing for Rehabilitation Clinicians: Strategies for Behavior Change and Client Engagement</a></h3>
-        <div class="meta">Sabina Khan</div>
-        <div class="meta">Routledge &middot; 2026-05-07 &middot; first seen 2026-08-10</div>
-        <div class="actions">
-<a class="tweet-btn" href="https://twitter.com/intent/tweet?text=Motivational+Interviewing+for+Rehabilitation+Clinicians%3A+Strategies+for+Behavior+Change+and+Client+Engagement+by+Sabina+Khan+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.4324%2F9781003646358" target="_blank" rel="noopener" title="Share on X">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
-  Share on X
-</a>
-</div>
-      </div>
+    <div class="row-body">
+      <h3><a href="books/c3e70d5d7e45f934.html">Motivational Interviewing for Rehabilitation Clinicians: Strategies for Behavior Change and Client Engagement</a></h3>
+      <div class="row-meta">Sabina Khan &middot; Routledge &middot; 2026-05-07</div>
     </div>
+    
+<a class="share-btn" href="https://twitter.com/intent/tweet?text=Motivational+Interviewing+for+Rehabilitation+Clinicians%3A+Strategies+for+Behavior+Change+and+Client+Engagement+by+Sabina+Khan+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.4324%2F9781003646358" target="_blank" rel="noopener" title="Share on X" aria-label="Share on X">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
+</a>
+
   </div>
   
-  <div class="card" data-tags="cardiopulmonary rehabilitation exercise prescription manual therapy">
-    <div class="card-row">
-      
+  <div class="row" data-tags="cardiopulmonary rehabilitation exercise prescription manual therapy">
+    
 
-<a class="cover-link" href="https://doi.org/10.61909/amkedtb042669" target="_blank" rel="noopener">
+<a class="row-cover cover-link" href="https://doi.org/10.61909/amkedtb042669" target="_blank" rel="noopener">
   <img class="cover" src="https://covers.openlibrary.org/b/isbn/9789365563993-M.jpg?default=false"
        alt="Cover of FUNCTIONAL RECOVERY" loading="lazy"
        onerror="this.closest('.cover-link').style.display='none'">
 </a>
 
 
-      <div class="card-body">
-        
-        <h3><a href="books/826bc6030f206344.html">FUNCTIONAL RECOVERY: MODERN APPROACHES TO PHYSIOTHERAPY</a></h3>
-        <div class="meta">Dr. DIGVIJAY SHARMA, Dr. CHANDRA SHEKHAR KUMAR</div>
-        <div class="meta">AMKCORP RESEARCH TECHNOLOGIES PRIVATE LIMITED &middot; 2026-04-25 &middot; first seen 2026-08-10</div>
-        <div class="actions">
-<a class="tweet-btn" href="https://twitter.com/intent/tweet?text=FUNCTIONAL+RECOVERY%3A+MODERN+APPROACHES+TO+PHYSIOTHERAPY+by+Dr.+DIGVIJAY+SHARMA%2C+Dr.+CHANDRA+SHEKHAR+KUMAR+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.61909%2Famkedtb042669" target="_blank" rel="noopener" title="Share on X">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
-  Share on X
-</a>
-</div>
-      </div>
+    <div class="row-body">
+      <h3><a href="books/826bc6030f206344.html">FUNCTIONAL RECOVERY: MODERN APPROACHES TO PHYSIOTHERAPY</a></h3>
+      <div class="row-meta">Dr. DIGVIJAY SHARMA, Dr. CHANDRA SHEKHAR KUMAR &middot; AMKCORP RESEARCH TECHNOLOGIES PRIVATE LIMITED &middot; 2026-04-25</div>
     </div>
+    
+<a class="share-btn" href="https://twitter.com/intent/tweet?text=FUNCTIONAL+RECOVERY%3A+MODERN+APPROACHES+TO+PHYSIOTHERAPY+by+Dr.+DIGVIJAY+SHARMA%2C+Dr.+CHANDRA+SHEKHAR+KUMAR+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.61909%2Famkedtb042669" target="_blank" rel="noopener" title="Share on X" aria-label="Share on X">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
+</a>
+
   </div>
   
-  <div class="card" data-tags="general">
-    <div class="card-row">
-      
+  <div class="row" data-tags="general">
+    
 
-<a class="cover-link" href="https://doi.org/10.33700/7aphxk15" target="_blank" rel="noopener">
+<a class="row-cover cover-link" href="https://doi.org/10.33700/7aphxk15" target="_blank" rel="noopener">
   <img class="cover" src="https://covers.openlibrary.org/b/isbn/9789617183955-M.jpg?default=false"
        alt="Cover of INTERNATIONAL SCIENTIFIC CONFERENCE IT’S ABOUT PEOPLE 2025: PHYSIOTHERAPY AND HEALTH SCIENCES: Peer-Reviewed Proceedings Book" loading="lazy"
        onerror="this.closest('.cover-link').style.display='none'">
 </a>
 
 
-      <div class="card-body">
-        
-        <h3><a href="books/3f5e3745472b73e0.html">INTERNATIONAL SCIENTIFIC CONFERENCE IT’S ABOUT PEOPLE 2025: PHYSIOTHERAPY AND HEALTH SCIENCES: Peer-Reviewed Proceedings Book</a></h3>
-        <div class="meta">Tine, ed. Kovačič</div>
-        <div class="meta">Alma Mater Press &middot; 2026-04-15 &middot; first seen 2026-08-10</div>
-        <div class="actions">
-<a class="tweet-btn" href="https://twitter.com/intent/tweet?text=INTERNATIONAL+SCIENTIFIC+CONFERENCE+IT%E2%80%99S+ABOUT+PEOPLE+2025%3A+PHYSIOTHERAPY+AND+HEALTH+SCIENCES%3A+Peer-Reviewed+Proceedings+Book+by+Tine%2C+ed.+Kova%C4%8Di%C4%8D+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.33700%2F7aphxk15" target="_blank" rel="noopener" title="Share on X">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
-  Share on X
-</a>
-</div>
-      </div>
+    <div class="row-body">
+      <h3><a href="books/3f5e3745472b73e0.html">INTERNATIONAL SCIENTIFIC CONFERENCE IT’S ABOUT PEOPLE 2025: PHYSIOTHERAPY AND HEALTH SCIENCES: Peer-Reviewed Proceedings Book</a></h3>
+      <div class="row-meta">Tine, ed. Kovačič &middot; Alma Mater Press &middot; 2026-04-15</div>
     </div>
+    
+<a class="share-btn" href="https://twitter.com/intent/tweet?text=INTERNATIONAL+SCIENTIFIC+CONFERENCE+IT%E2%80%99S+ABOUT+PEOPLE+2025%3A+PHYSIOTHERAPY+AND+HEALTH+SCIENCES%3A+Peer-Reviewed+Proceedings+Book+by+Tine%2C+ed.+Kova%C4%8Di%C4%8D+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.33700%2F7aphxk15" target="_blank" rel="noopener" title="Share on X" aria-label="Share on X">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
+</a>
+
   </div>
   
-  <div class="card" data-tags="general">
-    <div class="card-row">
-      
+  <div class="row" data-tags="general">
+    
 
-<a class="cover-link" href="https://doi.org/10.4324/9781003524328" target="_blank" rel="noopener">
+<a class="row-cover cover-link" href="https://doi.org/10.4324/9781003524328" target="_blank" rel="noopener">
   <img class="cover" src="https://covers.openlibrary.org/b/isbn/9781003524328-M.jpg?default=false"
        alt="Cover of Geriatric Rehabilitation for the Physical Therapist Assistant" loading="lazy"
        onerror="this.closest('.cover-link').style.display='none'">
 </a>
 
 
-      <div class="card-body">
-        
-        <h3><a href="books/b40353f6248539c1.html">Geriatric Rehabilitation for the Physical Therapist Assistant</a></h3>
-        <div class="meta">Jennifer Bottomley</div>
-        <div class="meta">Routledge &middot; 2026-04-13 &middot; first seen 2026-08-10</div>
-        <div class="actions">
-<a class="tweet-btn" href="https://twitter.com/intent/tweet?text=Geriatric+Rehabilitation+for+the+Physical+Therapist+Assistant+by+Jennifer+Bottomley+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.4324%2F9781003524328" target="_blank" rel="noopener" title="Share on X">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
-  Share on X
-</a>
-</div>
-      </div>
+    <div class="row-body">
+      <h3><a href="books/b40353f6248539c1.html">Geriatric Rehabilitation for the Physical Therapist Assistant</a></h3>
+      <div class="row-meta">Jennifer Bottomley &middot; Routledge &middot; 2026-04-13</div>
     </div>
+    
+<a class="share-btn" href="https://twitter.com/intent/tweet?text=Geriatric+Rehabilitation+for+the+Physical+Therapist+Assistant+by+Jennifer+Bottomley+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.4324%2F9781003524328" target="_blank" rel="noopener" title="Share on X" aria-label="Share on X">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
+</a>
+
   </div>
   
-  <div class="card" data-tags="general">
-    <div class="card-row">
-      
+  <div class="row" data-tags="general">
+    
 
-<a class="cover-link" href="https://doi.org/10.4324/9781003595601" target="_blank" rel="noopener">
+<a class="row-cover cover-link" href="https://doi.org/10.4324/9781003595601" target="_blank" rel="noopener">
   <img class="cover" src="https://covers.openlibrary.org/b/isbn/9781003595601-M.jpg?default=false"
        alt="Cover of Immersive Virtual Rehabilitation" loading="lazy"
        onerror="this.closest('.cover-link').style.display='none'">
 </a>
 
 
-      <div class="card-body">
-        
-        <h3><a href="books/858ca964198d7379.html">Immersive Virtual Rehabilitation: A Clinician&#39;s Guide</a></h3>
-        <div class="meta">Nancy A. Baker, Joanne M. Baird, Megan E. Kenney</div>
-        <div class="meta">Routledge &middot; 2026-04-08 &middot; first seen 2026-08-10</div>
-        <div class="actions">
-<a class="tweet-btn" href="https://twitter.com/intent/tweet?text=Immersive+Virtual+Rehabilitation%3A+A+Clinician%27s+Guide+by+Nancy+A.+Baker%2C+Joanne+M.+Baird+et+al.+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.4324%2F9781003595601" target="_blank" rel="noopener" title="Share on X">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
-  Share on X
-</a>
-</div>
-      </div>
+    <div class="row-body">
+      <h3><a href="books/858ca964198d7379.html">Immersive Virtual Rehabilitation: A Clinician&#39;s Guide</a></h3>
+      <div class="row-meta">Nancy A. Baker, Joanne M. Baird, Megan E. Kenney &middot; Routledge &middot; 2026-04-08</div>
     </div>
+    
+<a class="share-btn" href="https://twitter.com/intent/tweet?text=Immersive+Virtual+Rehabilitation%3A+A+Clinician%27s+Guide+by+Nancy+A.+Baker%2C+Joanne+M.+Baird+et+al.+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.4324%2F9781003595601" target="_blank" rel="noopener" title="Share on X" aria-label="Share on X">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
+</a>
+
   </div>
   
-  <div class="card" data-tags="general">
-    <div class="card-row">
-      
+  <div class="row" data-tags="general">
+    
 
-<a class="cover-link" href="https://doi.org/10.32745/9783775300322" target="_blank" rel="noopener">
+<a class="row-cover cover-link" href="https://doi.org/10.32745/9783775300322" target="_blank" rel="noopener">
   <img class="cover" src="https://covers.openlibrary.org/b/isbn/9783775300322-M.jpg?default=false"
        alt="Cover of Rehabilitation der Zukunft" loading="lazy"
        onerror="this.closest('.cover-link').style.display='none'">
 </a>
 
 
-      <div class="card-body">
-        
-        <h3><a href="books/ab61d921cfcc36d6.html">Rehabilitation der Zukunft: Zwischen Hightech, Evidenz und Empathie</a></h3>
-        <div class="meta">No author listed</div>
-        <div class="meta">MWV Verlag &middot; 2026-03-18 &middot; first seen 2026-08-10</div>
-        <div class="actions">
-<a class="tweet-btn" href="https://twitter.com/intent/tweet?text=Rehabilitation+der+Zukunft%3A+Zwischen+Hightech%2C+Evidenz+und+Empathie+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.32745%2F9783775300322" target="_blank" rel="noopener" title="Share on X">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
-  Share on X
-</a>
-</div>
-      </div>
+    <div class="row-body">
+      <h3><a href="books/ab61d921cfcc36d6.html">Rehabilitation der Zukunft: Zwischen Hightech, Evidenz und Empathie</a></h3>
+      <div class="row-meta">No author listed &middot; MWV Verlag &middot; 2026-03-18</div>
     </div>
+    
+<a class="share-btn" href="https://twitter.com/intent/tweet?text=Rehabilitation+der+Zukunft%3A+Zwischen+Hightech%2C+Evidenz+und+Empathie+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.32745%2F9783775300322" target="_blank" rel="noopener" title="Share on X" aria-label="Share on X">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
+</a>
+
   </div>
   
-  <div class="card" data-tags="general">
-    <div class="card-row">
-      
+  <div class="row" data-tags="general">
+    
 
 
-      <div class="card-body">
-        
-        <h3><a href="books/7e3bd7a1b39d1737.html">Performance-based Contracts for Road Rehabilitation and Maintenance in the State of Bahia</a></h3>
-        <div class="meta">Eric Lancelot, Joanna Moody, Gabriel Pereira Caldeira, Carlos Garzón Guinea, Carlos Augusto Costa David, Anibal Coelho da Costa</div>
-        <div class="meta">Washington, DC: World Bank &middot; 2026-03-13 &middot; first seen 2026-08-10</div>
-        <div class="actions">
-<a class="tweet-btn" href="https://twitter.com/intent/tweet?text=Performance-based+Contracts+for+Road+Rehabilitation+and+Maintenance+in+the+State+of+Bahia+by+Eric+Lancelot%2C+Joanna+Moody+et+al.+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.1596%2F44475" target="_blank" rel="noopener" title="Share on X">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
-  Share on X
-</a>
-</div>
-      </div>
+    <div class="row-body">
+      <h3><a href="books/7e3bd7a1b39d1737.html">Performance-based Contracts for Road Rehabilitation and Maintenance in the State of Bahia</a></h3>
+      <div class="row-meta">Eric Lancelot, Joanna Moody, Gabriel Pereira Caldeira, Carlos Garzón Guinea, Carlos Augusto Costa David, Anibal Coelho da Costa &middot; Washington, DC: World Bank &middot; 2026-03-13</div>
     </div>
+    
+<a class="share-btn" href="https://twitter.com/intent/tweet?text=Performance-based+Contracts+for+Road+Rehabilitation+and+Maintenance+in+the+State+of+Bahia+by+Eric+Lancelot%2C+Joanna+Moody+et+al.+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.1596%2F44475" target="_blank" rel="noopener" title="Share on X" aria-label="Share on X">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
+</a>
+
   </div>
   
-  <div class="card" data-tags="general">
-    <div class="card-row">
-      
+  <div class="row" data-tags="general">
+    
 
-<a class="cover-link" href="https://doi.org/10.4324/9781003254836" target="_blank" rel="noopener">
+<a class="row-cover cover-link" href="https://doi.org/10.4324/9781003254836" target="_blank" rel="noopener">
   <img class="cover" src="https://covers.openlibrary.org/b/isbn/9781003254836-M.jpg?default=false"
        alt="Cover of Sports Rehabilitation and Training" loading="lazy"
        onerror="this.closest('.cover-link').style.display='none'">
 </a>
 
 
-      <div class="card-body">
-        
-        <h3><a href="books/c9a85334747bd456.html">Sports Rehabilitation and Training: Multidisciplinary Perspectives</a></h3>
-        <div class="meta">Richard Moss, Adam Gledhill</div>
-        <div class="meta">Routledge &middot; 2026-03-04 &middot; first seen 2026-08-10</div>
-        <div class="actions">
-<a class="tweet-btn" href="https://twitter.com/intent/tweet?text=Sports+Rehabilitation+and+Training%3A+Multidisciplinary+Perspectives+by+Richard+Moss%2C+Adam+Gledhill+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.4324%2F9781003254836" target="_blank" rel="noopener" title="Share on X">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
-  Share on X
-</a>
-</div>
-      </div>
+    <div class="row-body">
+      <h3><a href="books/c9a85334747bd456.html">Sports Rehabilitation and Training: Multidisciplinary Perspectives</a></h3>
+      <div class="row-meta">Richard Moss, Adam Gledhill &middot; Routledge &middot; 2026-03-04</div>
     </div>
+    
+<a class="share-btn" href="https://twitter.com/intent/tweet?text=Sports+Rehabilitation+and+Training%3A+Multidisciplinary+Perspectives+by+Richard+Moss%2C+Adam+Gledhill+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.4324%2F9781003254836" target="_blank" rel="noopener" title="Share on X" aria-label="Share on X">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
+</a>
+
   </div>
   
-  <div class="card" data-tags="general">
-    <div class="card-row">
-      
+  <div class="row" data-tags="general">
+    
 
-<a class="cover-link" href="https://doi.org/10.4324/9781003740308" target="_blank" rel="noopener">
+<a class="row-cover cover-link" href="https://doi.org/10.4324/9781003740308" target="_blank" rel="noopener">
   <img class="cover" src="https://covers.openlibrary.org/b/isbn/9781003740308-M.jpg?default=false"
        alt="Cover of Psychosocial Elements of Physical Therapy" loading="lazy"
        onerror="this.closest('.cover-link').style.display='none'">
 </a>
 
 
-      <div class="card-body">
-        
-        <h3><a href="books/35eb4984ec431dac.html">Psychosocial Elements of Physical Therapy: The Connection of Body to Mind</a></h3>
-        <div class="meta">Hannah (Johnson) Baker</div>
-        <div class="meta">Routledge &middot; 2026-02-26 &middot; first seen 2026-08-10</div>
-        <div class="actions">
-<a class="tweet-btn" href="https://twitter.com/intent/tweet?text=Psychosocial+Elements+of+Physical+Therapy%3A+The+Connection+of+Body+to+Mind+by+Hannah+%28Johnson%29+Baker+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.4324%2F9781003740308" target="_blank" rel="noopener" title="Share on X">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
-  Share on X
-</a>
-</div>
-      </div>
+    <div class="row-body">
+      <h3><a href="books/35eb4984ec431dac.html">Psychosocial Elements of Physical Therapy: The Connection of Body to Mind</a></h3>
+      <div class="row-meta">Hannah (Johnson) Baker &middot; Routledge &middot; 2026-02-26</div>
     </div>
+    
+<a class="share-btn" href="https://twitter.com/intent/tweet?text=Psychosocial+Elements+of+Physical+Therapy%3A+The+Connection+of+Body+to+Mind+by+Hannah+%28Johnson%29+Baker+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.4324%2F9781003740308" target="_blank" rel="noopener" title="Share on X" aria-label="Share on X">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
+</a>
+
   </div>
   
-  <div class="card" data-tags="general">
-    <div class="card-row">
-      
+  <div class="row" data-tags="general">
+    
 
-<a class="cover-link" href="https://doi.org/10.3390/books978-3-7258-6745-5" target="_blank" rel="noopener">
+<a class="row-cover cover-link" href="https://doi.org/10.3390/books978-3-7258-6745-5" target="_blank" rel="noopener">
   <img class="cover" src="https://covers.openlibrary.org/b/isbn/9783725867455-M.jpg?default=false"
        alt="Cover of Symmetry Application in Motor Control in Sports and Rehabilitation" loading="lazy"
        onerror="this.closest('.cover-link').style.display='none'">
 </a>
 
 
-      <div class="card-body">
-        
-        <h3><a href="books/ec7444b9c9d78c3b.html">Symmetry Application in Motor Control in Sports and Rehabilitation</a></h3>
-        <div class="meta">No author listed</div>
-        <div class="meta">MDPI &middot; 2026-02-23 &middot; first seen 2026-08-10</div>
-        <div class="actions">
-<a class="tweet-btn" href="https://twitter.com/intent/tweet?text=Symmetry+Application+in+Motor+Control+in+Sports+and+Rehabilitation+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.3390%2Fbooks978-3-7258-6745-5" target="_blank" rel="noopener" title="Share on X">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
-  Share on X
-</a>
-</div>
-      </div>
+    <div class="row-body">
+      <h3><a href="books/ec7444b9c9d78c3b.html">Symmetry Application in Motor Control in Sports and Rehabilitation</a></h3>
+      <div class="row-meta">No author listed &middot; MDPI &middot; 2026-02-23</div>
     </div>
+    
+<a class="share-btn" href="https://twitter.com/intent/tweet?text=Symmetry+Application+in+Motor+Control+in+Sports+and+Rehabilitation+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.3390%2Fbooks978-3-7258-6745-5" target="_blank" rel="noopener" title="Share on X" aria-label="Share on X">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
+</a>
+
   </div>
   
-  <div class="card" data-tags="general">
-    <div class="card-row">
-      
+  <div class="row" data-tags="general">
+    
 
-<a class="cover-link" href="https://doi.org/10.3390/books978-3-7258-5942-9" target="_blank" rel="noopener">
+<a class="row-cover cover-link" href="https://doi.org/10.3390/books978-3-7258-5942-9" target="_blank" rel="noopener">
   <img class="cover" src="https://covers.openlibrary.org/b/isbn/9783725859429-M.jpg?default=false"
        alt="Cover of Recent Advances in Assessment and Rehabilitation of Individuals with Communication and Language Disorders" loading="lazy"
        onerror="this.closest('.cover-link').style.display='none'">
 </a>
 
 
-      <div class="card-body">
-        
-        <h3><a href="books/5facadc8f91cfd06.html">Recent Advances in Assessment and Rehabilitation of Individuals with Communication and Language Disorders</a></h3>
-        <div class="meta">No author listed</div>
-        <div class="meta">MDPI &middot; 2026-01-16 &middot; first seen 2026-08-10</div>
-        <div class="actions">
-<a class="tweet-btn" href="https://twitter.com/intent/tweet?text=Recent+Advances+in+Assessment+and+Rehabilitation+of+Individuals+with+Communication+and+Language+Disorders+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.3390%2Fbooks978-3-7258-5942-9" target="_blank" rel="noopener" title="Share on X">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
-  Share on X
-</a>
-</div>
-      </div>
+    <div class="row-body">
+      <h3><a href="books/5facadc8f91cfd06.html">Recent Advances in Assessment and Rehabilitation of Individuals with Communication and Language Disorders</a></h3>
+      <div class="row-meta">No author listed &middot; MDPI &middot; 2026-01-16</div>
     </div>
+    
+<a class="share-btn" href="https://twitter.com/intent/tweet?text=Recent+Advances+in+Assessment+and+Rehabilitation+of+Individuals+with+Communication+and+Language+Disorders+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.3390%2Fbooks978-3-7258-5942-9" target="_blank" rel="noopener" title="Share on X" aria-label="Share on X">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
+</a>
+
   </div>
   
-  <div class="card" data-tags="general">
-    <div class="card-row">
-      
+  <div class="row" data-tags="general">
+    
 
-<a class="cover-link" href="https://doi.org/10.70593/978-93-7185-790-1" target="_blank" rel="noopener">
+<a class="row-cover cover-link" href="https://doi.org/10.70593/978-93-7185-790-1" target="_blank" rel="noopener">
   <img class="cover" src="https://covers.openlibrary.org/b/isbn/9789371857901-M.jpg?default=false"
        alt="Cover of Frozen Shoulder and Physiotherapy" loading="lazy"
        onerror="this.closest('.cover-link').style.display='none'">
 </a>
 
 
-      <div class="card-body">
-        
-        <h3><a href="books/5dac5be019ec8d5e.html">Frozen Shoulder and Physiotherapy</a></h3>
-        <div class="meta">Kirupa. K, Bernard Ebenezer Cyrus, Soundarya V, T. Suganya, Pavithra D</div>
-        <div class="meta">Deep Science Publishing &middot; 2026-01-15 &middot; first seen 2026-08-10</div>
-        <div class="actions">
-<a class="tweet-btn" href="https://twitter.com/intent/tweet?text=Frozen+Shoulder+and+Physiotherapy+by+Kirupa.+K%2C+Bernard+Ebenezer+Cyrus+et+al.+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.70593%2F978-93-7185-790-1" target="_blank" rel="noopener" title="Share on X">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
-  Share on X
-</a>
-</div>
-      </div>
+    <div class="row-body">
+      <h3><a href="books/5dac5be019ec8d5e.html">Frozen Shoulder and Physiotherapy</a></h3>
+      <div class="row-meta">Kirupa. K, Bernard Ebenezer Cyrus, Soundarya V, T. Suganya, Pavithra D &middot; Deep Science Publishing &middot; 2026-01-15</div>
     </div>
+    
+<a class="share-btn" href="https://twitter.com/intent/tweet?text=Frozen+Shoulder+and+Physiotherapy+by+Kirupa.+K%2C+Bernard+Ebenezer+Cyrus+et+al.+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.70593%2F978-93-7185-790-1" target="_blank" rel="noopener" title="Share on X" aria-label="Share on X">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
+</a>
+
   </div>
   
-  <div class="card" data-tags="general">
-    <div class="card-row">
-      
+  <div class="row" data-tags="general">
+    
 
-<a class="cover-link" href="https://doi.org/10.4324/9781003646662" target="_blank" rel="noopener">
+<a class="row-cover cover-link" href="https://doi.org/10.4324/9781003646662" target="_blank" rel="noopener">
   <img class="cover" src="https://covers.openlibrary.org/b/isbn/9781003646662-M.jpg?default=false"
        alt="Cover of The Routledge International Handbook of Neurocognitive Rehabilitation" loading="lazy"
        onerror="this.closest('.cover-link').style.display='none'">
 </a>
 
 
-      <div class="card-body">
-        
-        <h3><a href="books/1dbcbb2452a4a331.html">The Routledge International Handbook of Neurocognitive Rehabilitation: Practices, Innovations, and Future Directions</a></h3>
-        <div class="meta">K. Jayasankara Reddy</div>
-        <div class="meta">Routledge &middot; 2026-01-09 &middot; first seen 2026-08-10</div>
-        <div class="actions">
-<a class="tweet-btn" href="https://twitter.com/intent/tweet?text=The+Routledge+International+Handbook+of+Neurocognitive+Rehabilitation%3A+Practices%2C+Innovations%2C+and+Future+Directions+by+K.+Jayasankara+Reddy+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.4324%2F9781003646662" target="_blank" rel="noopener" title="Share on X">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
-  Share on X
-</a>
-</div>
-      </div>
+    <div class="row-body">
+      <h3><a href="books/1dbcbb2452a4a331.html">The Routledge International Handbook of Neurocognitive Rehabilitation: Practices, Innovations, and Future Directions</a></h3>
+      <div class="row-meta">K. Jayasankara Reddy &middot; Routledge &middot; 2026-01-09</div>
     </div>
+    
+<a class="share-btn" href="https://twitter.com/intent/tweet?text=The+Routledge+International+Handbook+of+Neurocognitive+Rehabilitation%3A+Practices%2C+Innovations%2C+and+Future+Directions+by+K.+Jayasankara+Reddy+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.4324%2F9781003646662" target="_blank" rel="noopener" title="Share on X" aria-label="Share on X">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
+</a>
+
   </div>
   
-  <div class="card" data-tags="general">
-    <div class="card-row">
-      
+  <div class="row" data-tags="general">
+    
 
-<a class="cover-link" href="https://doi.org/10.4324/9781003741961" target="_blank" rel="noopener">
+<a class="row-cover cover-link" href="https://doi.org/10.4324/9781003741961" target="_blank" rel="noopener">
   <img class="cover" src="https://covers.openlibrary.org/b/isbn/9781003741961-M.jpg?default=false"
        alt="Cover of Neural Repair, Transplantation and Rehabilitation" loading="lazy"
        onerror="this.closest('.cover-link').style.display='none'">
 </a>
 
 
-      <div class="card-body">
-        
-        <h3><a href="books/4dc04cf09f090b96.html">Neural Repair, Transplantation and Rehabilitation</a></h3>
-        <div class="meta">Roger A. Barker, Stephen B. Dunnett</div>
-        <div class="meta">Routledge &middot; 2026-01-09 &middot; first seen 2026-08-10</div>
-        <div class="actions">
-<a class="tweet-btn" href="https://twitter.com/intent/tweet?text=Neural+Repair%2C+Transplantation+and+Rehabilitation+by+Roger+A.+Barker%2C+Stephen+B.+Dunnett+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.4324%2F9781003741961" target="_blank" rel="noopener" title="Share on X">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
-  Share on X
-</a>
-</div>
-      </div>
+    <div class="row-body">
+      <h3><a href="books/4dc04cf09f090b96.html">Neural Repair, Transplantation and Rehabilitation</a></h3>
+      <div class="row-meta">Roger A. Barker, Stephen B. Dunnett &middot; Routledge &middot; 2026-01-09</div>
     </div>
+    
+<a class="share-btn" href="https://twitter.com/intent/tweet?text=Neural+Repair%2C+Transplantation+and+Rehabilitation+by+Roger+A.+Barker%2C+Stephen+B.+Dunnett+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.4324%2F9781003741961" target="_blank" rel="noopener" title="Share on X" aria-label="Share on X">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
+</a>
+
   </div>
   
-  <div class="card" data-tags="general">
-    <div class="card-row">
-      
+  <div class="row" data-tags="general">
+    
 
-<a class="cover-link" href="https://doi.org/10.4324/9781003749370" target="_blank" rel="noopener">
+<a class="row-cover cover-link" href="https://doi.org/10.4324/9781003749370" target="_blank" rel="noopener">
   <img class="cover" src="https://covers.openlibrary.org/b/isbn/9781003749370-M.jpg?default=false"
        alt="Cover of Cognitive Neuropsychology and Cognitive Rehabilitation" loading="lazy"
        onerror="this.closest('.cover-link').style.display='none'">
 </a>
 
 
-      <div class="card-body">
-        
-        <h3><a href="books/4efd38fb9c443e6c.html">Cognitive Neuropsychology and Cognitive Rehabilitation</a></h3>
-        <div class="meta">M. J. Riddoch, G. W. Humphreys</div>
-        <div class="meta">Routledge &middot; 2026-01-09 &middot; first seen 2026-08-10</div>
-        <div class="actions">
-<a class="tweet-btn" href="https://twitter.com/intent/tweet?text=Cognitive+Neuropsychology+and+Cognitive+Rehabilitation+by+M.+J.+Riddoch%2C+G.+W.+Humphreys+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.4324%2F9781003749370" target="_blank" rel="noopener" title="Share on X">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
-  Share on X
-</a>
-</div>
-      </div>
+    <div class="row-body">
+      <h3><a href="books/4efd38fb9c443e6c.html">Cognitive Neuropsychology and Cognitive Rehabilitation</a></h3>
+      <div class="row-meta">M. J. Riddoch, G. W. Humphreys &middot; Routledge &middot; 2026-01-09</div>
     </div>
+    
+<a class="share-btn" href="https://twitter.com/intent/tweet?text=Cognitive+Neuropsychology+and+Cognitive+Rehabilitation+by+M.+J.+Riddoch%2C+G.+W.+Humphreys+%23physiotherapy+%23PT&amp;url=https%3A%2F%2Fdoi.org%2F10.4324%2F9781003749370" target="_blank" rel="noopener" title="Share on X" aria-label="Share on X">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
+</a>
+
   </div>
   
 
@@ -777,41 +651,22 @@
 
 <script>
 (function () {
-  var checkboxes = Array.prototype.slice.call(document.querySelectorAll('.filter-tag'));
-  var allBox = document.querySelector('.filter-all');
-  var cards = Array.prototype.slice.call(document.querySelectorAll('#book-list .card'));
-
-  function apply() {
-    var active = checkboxes.filter(function (c) { return c.checked; }).map(function (c) { return c.value; });
-    if (active.length === 0) {
-      cards.forEach(function (c) { c.style.display = ''; });
-      return;
-    }
-    cards.forEach(function (c) {
-      var tags = (c.getAttribute('data-tags') || '').split(' ');
-      var match = tags.some(function (t) { return active.indexOf(t) !== -1; });
-      c.style.display = match ? '' : 'none';
-    });
-  }
-
-  allBox.addEventListener('change', function () {
-    if (allBox.checked) {
-      checkboxes.forEach(function (c) { c.checked = false; });
-      apply();
-    }
-  });
-  checkboxes.forEach(function (c) {
-    c.addEventListener('change', function () {
-      if (c.checked) allBox.checked = false;
-      apply();
+  var select = document.getElementById('filter-select');
+  if (!select) return;
+  var rows = Array.prototype.slice.call(document.querySelectorAll('#book-list .row'));
+  select.addEventListener('change', function () {
+    var value = select.value;
+    rows.forEach(function (row) {
+      var tags = (row.getAttribute('data-tags') || '').split(' ');
+      row.style.display = (!value || tags.indexOf(value) !== -1) ? '' : 'none';
     });
   });
 })();
 </script>
 
   <footer class="site">
-    Generated 2026-08-10 16:47 UTC &middot; 23 books tracked in total &middot;
-    <a href="https://github.com/" target="_blank" rel="noopener">source</a>
+    Updated 2026-08-10 22:46 UTC &middot; 23 books tracked
+     &middot; <a href="https://github.com/7azmi14/physio-book-tracker" target="_blank" rel="noopener">source</a>
   </footer>
 </div>
 </body>
