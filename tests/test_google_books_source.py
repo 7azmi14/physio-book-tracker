@@ -34,6 +34,7 @@ def make_config(**source_options) -> Config:
         min_relevance_score=0,
         site_title="Test",
         site_base_url="",
+        site_github_repo="",
     )
 
 

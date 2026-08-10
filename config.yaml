@@ -78,7 +78,11 @@ site:
   # URL, typically https://<username>.github.io/<repo>). Used for feed.xml /
   # feed.json item links and RSS <link> — safe to leave as a placeholder
   # until then, it only affects those absolute links.
-  base_url: "https://example.github.io/physio-book-tracker"
+  base_url: "https://7azmi14.github.io/physio-book-tracker"
+  # owner/repo — powers the "Update Me" button on the site, which links
+  # straight to this workflow's manual-run page on GitHub. Leave blank to
+  # hide the button.
+  github_repo: "7azmi14/physio-book-tracker"
 
 # Relevance score (see core/scoring.py) below which an item is discarded
 # entirely and never stored. Raise this if the digest is too noisy, lower it

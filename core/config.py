@@ -28,6 +28,7 @@ class Config:
     min_relevance_score: int
     site_title: str
     site_base_url: str
+    site_github_repo: str
 
     @classmethod
     def load(cls, path: str | Path) -> "Config":
@@ -53,6 +54,7 @@ class Config:
             min_relevance_score=int(raw.get("min_relevance_score", 0)),
             site_title=site.get("title") or "Physio Book Tracker",
             site_base_url=(site.get("base_url") or "").rstrip("/"),
+            site_github_repo=site.get("github_repo") or "",
         )
 
 

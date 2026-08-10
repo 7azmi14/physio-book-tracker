@@ -104,6 +104,30 @@
   }
   .tweet-btn:hover { border-color: var(--accent); color: var(--accent); }
   .tweet-btn svg { width: 12px; height: 12px; fill: currentColor; }
+  .update-box {
+    text-align: center;
+    background: var(--accent-bg);
+    border: 1px solid var(--accent);
+    border-radius: 14px;
+    padding: 1.5rem 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  .update-btn {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--bg);
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    padding: .75rem 1.75rem;
+    border-radius: 999px;
+  }
+  .update-btn:hover { opacity: 0.9; }
+  .update-help {
+    color: var(--muted);
+    font-size: .82rem;
+    margin: .6rem 0 0;
+  }
   .book-detail dl { display: grid; grid-template-columns: auto 1fr; gap: .3rem 1rem; font-size: .95rem; }
   .book-detail dt { color: var(--muted); }
   .back-link { display: inline-block; margin-bottom: 1rem; font-size: .9rem; }
@@ -117,6 +141,18 @@
     <nav><a href="index.html">Home</a><a href="feed.xml">RSS</a><a href="feed.json">JSON Feed</a></nav>
   </header>
   
+
+
+<div class="update-box">
+  <a class="update-btn" href="https://github.com/7azmi14/physio-book-tracker/actions/workflows/monthly.yml" target="_blank" rel="noopener">🔄 Update Me</a>
+  <p class="update-help">
+    Opens GitHub — click the green <strong>Run workflow</strong> button there to confirm
+    (that last click has to happen on GitHub itself, it's what keeps this button safe to
+    put on a public page). Takes about a minute, then reload this page.
+  </p>
+  <p class="update-help">Site last generated 2026-08-10 16:30 UTC.</p>
+</div>
+
 
 <h2 class="section">New editions of your reference texts (0)</h2>
 
@@ -774,7 +810,7 @@
 </script>
 
   <footer class="site">
-    Generated 2026-08-10 14:25 UTC &middot; 23 books tracked in total &middot;
+    Generated 2026-08-10 16:30 UTC &middot; 23 books tracked in total &middot;
     <a href="https://github.com/" target="_blank" rel="noopener">source</a>
   </footer>
 </div>
