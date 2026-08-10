@@ -1,0 +1,41 @@
+{
+  "full_item": {
+    "id": "vol-full",
+    "volumeInfo": {
+      "title": "Orthopedic Physical Assessment",
+      "subtitle": "8th Edition",
+      "authors": ["David J. Magee", "Robert C. Manske"],
+      "publisher": "Elsevier",
+      "publishedDate": "2026-04-03",
+      "industryIdentifiers": [
+        {"type": "ISBN_10", "identifier": "0443128640"},
+        {"type": "ISBN_13", "identifier": "9780443128646"}
+      ],
+      "categories": ["Medical / Physical Medicine & Rehabilitation"],
+      "description": "A comprehensive assessment text, now in its 8th edition.",
+      "infoLink": "https://books.google.com/books?id=vol-full"
+    }
+  },
+  "isbn10_only": {
+    "id": "vol-isbn10",
+    "volumeInfo": {
+      "title": "A Manual Therapy Text",
+      "authors": ["Some Author"],
+      "publishedDate": "2026",
+      "industryIdentifiers": [
+        {"type": "ISBN_10", "identifier": "080362574X"}
+      ]
+    }
+  },
+  "no_date_no_title": {
+    "id": "vol-bare",
+    "volumeInfo": {}
+  },
+  "partial_date": {
+    "id": "vol-partial",
+    "volumeInfo": {
+      "title": "Rehabilitation Basics",
+      "publishedDate": "2026-05"
+    }
+  }
+}

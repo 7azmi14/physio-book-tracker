@@ -32,8 +32,11 @@ exclude_keywords:
 # store dedupes.
 lookback_days: 45
 
-# Toggle sources on/off without deleting their code. Only "crossref" is
-# implemented so far; the others are placeholders for later build phases.
+# Toggle sources on/off without deleting their code. "crossref" and
+# "google_books" are implemented; "openlibrary" and "springer" are
+# placeholders for a later build phase. Leave google_books off until you've
+# checked its output quality the same way you did for CrossRef
+# (python main.py --dry-run), same as the original build order.
 sources:
   crossref:
     enabled: true
@@ -43,6 +46,12 @@ sources:
     mailto: "alharbi.abd@outlook.com"
   google_books:
     enabled: false
+    # Optional. Google Books works without a key at low volume. If you hit
+    # rate limits, get a key at console.cloud.google.com (enable the
+    # "Books API") — but since config.yaml is committed to the repo,
+    # leave this blank and set it via an environment variable instead if
+    # the repo is public; ask to have that wired in if you want it.
+    api_key: ""
   openlibrary:
     enabled: false
   springer:

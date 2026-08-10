@@ -9,7 +9,14 @@ committed JSON file.
 ## How it works
 
 1. `main.py` fetches candidate books from each enabled source in
-   [`sources/`](sources/) (currently: [CrossRef](sources/crossref.py)).
+   [`sources/`](sources/) — currently [CrossRef](sources/crossref.py)
+   (subject-keyword search) and [Google Books](sources/google_books.py)
+   (subject search plus a direct title+author query per watchlist entry,
+   which is what actually catches new editions reliably — CrossRef's
+   keyword search alone won't surface a book whose own title doesn't
+   contain any tracked subject term). Google Books ships disabled by
+   default in `config.yaml`; flip it on once you've checked its output
+   quality with `--dry-run`, same as CrossRef.
 2. Records are deduplicated (ISBN-13 → DOI → normalised title+author+year —
    [`core/dedupe.py`](core/dedupe.py)), checked against `state.json` so
    nothing already seen is reprocessed, then scored for relevance against

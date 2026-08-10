@@ -1,0 +1,60 @@
+name: Monthly Book Tracker
+
+on:
+  schedule:
+    # 1st of the month, 06:00 UTC. GitHub may delay scheduled runs by a few
+    # minutes to hours under load; that's fine for a monthly digest.
+    - cron: "0 6 1 * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write   # to commit state.json + site/ back to the repo
+  pages: write       # to deploy the static site
+  id-token: write    # required by actions/deploy-pages
+
+# Only one Pages deployment at a time; don't cancel an in-flight run just
+# because a manual dispatch was also triggered.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  track:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements-dev.txt
+
+      - name: Run tests
+        run: pytest -q
+
+      - name: Run tracking cycle
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+        run: python main.py
+
+      - name: Commit updated state and site
+        run: |
+          git config user.name "physio-book-tracker-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add state.json site
+          git diff --cached --quiet || git commit -m "Update tracked books ($(date -u +%Y-%m-%d))"
+          git push
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

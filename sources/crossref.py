@@ -12,6 +12,7 @@ import time
 from datetime import date
 
 from core.config import Config
+from core.edition import WatchlistEntry
 from core.http import SourceError, get_json
 from core.models import BookRecord
 from core.normalize import normalize_isbn13
@@ -28,7 +29,9 @@ DELAY_BETWEEN_QUERIES = 0.5  # seconds; polite pacing across per-keyword queries
 class CrossRefSource(BaseSource):
     name = "crossref"
 
-    def fetch(self, *, since: date, config: Config) -> list[BookRecord]:
+    def fetch(
+        self, *, since: date, config: Config, watchlist: list[WatchlistEntry]
+    ) -> list[BookRecord]:
         source_cfg = config.sources.get(self.name)
         mailto = (source_cfg.options.get("mailto") if source_cfg else None)
         keywords = config.include_keywords or [""]

@@ -1,10 +1,7 @@
 #!/usr/bin/env python3
 """Run one tracking cycle: fetch from enabled sources, dedupe, score, check
-the watchlist for new editions, update state, and print a report.
-
-This is phase 1 of the build (see README.md) — terminal output only. The
-static site, RSS/JSON feeds, and email digest are not built yet; this
-command is how you sanity-check data quality before those get layered on.
+the watchlist for new editions, update state, print a report, regenerate
+the static site, and send the email digest if anything new was found.
 """
 from __future__ import annotations
 
@@ -25,6 +22,7 @@ from core.state import StateStore
 from core.tags import derive_tags
 from sources.base import BaseSource
 from sources.crossref import CrossRefSource
+from sources.google_books import GoogleBooksSource
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
 logger = logging.getLogger("main")
@@ -41,7 +39,8 @@ for _stream in (sys.stdout, sys.stderr):
 
 SOURCE_REGISTRY: dict[str, type[BaseSource]] = {
     "crossref": CrossRefSource,
-    # google_books, openlibrary, springer added in a later build phase
+    "google_books": GoogleBooksSource,
+    # openlibrary, springer added in a later build phase
 }
 
 ROOT = Path(__file__).parent
@@ -72,7 +71,9 @@ def parse_args() -> argparse.Namespace:
     return p.parse_args()
 
 
-def run_sources(config: Config, since: date) -> tuple[list[BookRecord], dict[str, str]]:
+def run_sources(
+    config: Config, since: date, watchlist: list
+) -> tuple[list[BookRecord], dict[str, str]]:
     """Returns (all_records, source_status). source_status maps source name
     to 'ok (N items)' or an error description, so gaps can be reported."""
     all_records: list[BookRecord] = []
@@ -87,7 +88,7 @@ def run_sources(config: Config, since: date) -> tuple[list[BookRecord], dict[str
             status[name] = "enabled in config but not implemented yet"
             continue
         try:
-            records = source_cls().fetch(since=since, config=config)
+            records = source_cls().fetch(since=since, config=config, watchlist=watchlist)
         except Exception as exc:  # noqa: BLE001 - a source must never abort the run
             logger.error("source %r failed: %s", name, exc)
             status[name] = f"FAILED: {exc}"
@@ -207,7 +208,7 @@ def main() -> int:
     lookback_days = args.lookback_days if args.lookback_days is not None else config.lookback_days
     since = date.today() - timedelta(days=lookback_days)
 
-    records, source_status = run_sources(config, since)
+    records, source_status = run_sources(config, since, watchlist)
     result = process(records, config, watchlist, state)
     print_report(since, source_status, result)
 
