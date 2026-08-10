@@ -1,4 +1,4 @@
-from core.site import SiteItem
+from core.site import SiteItem, _hits_badge_url
 
 
 def make_item(**kwargs) -> SiteItem:
@@ -57,3 +57,17 @@ def test_tweet_text_flags_new_edition():
         watchlist_short_title="Magee",
     )
     assert "new edition (8) of Magee" in item.tweet_text
+
+
+class FakeConfig:
+    def __init__(self, site_base_url):
+        self.site_base_url = site_base_url
+
+
+def test_hits_badge_url_strips_scheme_and_adds_trailing_slash():
+    url = _hits_badge_url(FakeConfig("https://example.github.io/physio-book-tracker"))
+    assert url == "https://hits.sh/example.github.io/physio-book-tracker/.svg?style=flat-square&label=views"
+
+
+def test_hits_badge_url_none_without_base_url():
+    assert _hits_badge_url(FakeConfig("")) is None

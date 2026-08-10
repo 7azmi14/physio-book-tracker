@@ -153,6 +153,7 @@ def build_site(
         "total_known": len(items),
         "actions_url": actions_url,
         "github_repo": config.site_github_repo or None,
+        "hits_badge_url": _hits_badge_url(config),
     }
 
     index_html = env.get_template("index.html").render(
@@ -172,6 +173,15 @@ def build_site(
 def _item_url(config: Config, item: SiteItem) -> str:
     base = config.site_base_url or "."
     return f"{base}/books/{item.slug}.html"
+
+
+def _hits_badge_url(config: Config) -> str | None:
+    """hits.sh visit-counter badge — free, keyless, no signup: it just
+    counts requests for a badge image keyed by the target URL you embed."""
+    if not config.site_base_url:
+        return None
+    target = config.site_base_url.split("://", 1)[-1].rstrip("/") + "/"
+    return f"https://hits.sh/{target}.svg?style=flat-square&label=views"
 
 
 def _write_rss(items: list[SiteItem], config: Config, path: Path) -> None:
