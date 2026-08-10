@@ -74,11 +74,12 @@ email:
 
 site:
   title: "Physio Book Tracker"
-  # Update this once GitHub Pages is live (Settings -> Pages will show the
-  # URL, typically https://<username>.github.io/<repo>). Used for feed.xml /
-  # feed.json item links and RSS <link> — safe to leave as a placeholder
-  # until then, it only affects those absolute links.
-  base_url: "https://7azmi14.github.io/physio-book-tracker"
+  # Used for feed.xml / feed.json item links, RSS <link>, and the "View
+  # full site" link in the email digest. The clean Cloudflare Pages URL —
+  # GitHub Pages (https://7azmi14.github.io/physio-book-tracker) still
+  # works too and gets the same content, this is just the one without a
+  # personal username in it, which is what's meant to be shared.
+  base_url: "https://physio-book-tracker.pages.dev"
   # owner/repo — powers the "Update Me" button on the site, which links
   # straight to this workflow's manual-run page on GitHub. Leave blank to
   # hide the button.
