@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% import "_macros.html" as m %}
+{% block title %}{{ site_title }}{% endblock %}
+{% block content %}
+
+<h2 class="section">New editions of your reference texts ({{ new_editions|length }})</h2>
+{% if new_editions %}
+  {% for item in new_editions %}
+  <div class="card edition">
+    <div class="card-row">
+      {{ m.cover(item) }}
+      <div class="card-body">
+        <span class="badge">New edition</span>
+        <h3><a href="books/{{ item.slug }}.html">{{ item.title }}{% if item.subtitle %}: {{ item.subtitle }}{% endif %}</a></h3>
+        <div class="meta">{{ item.watchlist_short_title }} &mdash; edition {{ item.edition }} (you have {{ item.watchlist_current_edition }})</div>
+        <div class="meta">{{ item.authors|join(", ") if item.authors else "No author listed" }} &middot; {{ item.publisher or "?" }} &middot; {{ item.published_date or "?" }}</div>
+        <div class="actions">{{ m.tweet_button(item) }}</div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+{% else %}
+  <p class="empty">No newer editions of your watchlist texts found yet.</p>
+{% endif %}
+
+<h2 class="section">Recent releases ({{ items|length }})</h2>
+<div class="filters" id="filters">
+  <label><input type="checkbox" class="filter-all" checked> All</label>
+  {% for tag in all_tags %}
+  <label><input type="checkbox" class="filter-tag" value="{{ tag }}"> {{ tag|title }}</label>
+  {% endfor %}
+</div>
+
+<div id="book-list">
+{% if items %}
+  {% for item in items %}
+  <div class="card" data-tags="{{ item.tags|join(' ') }}">
+    <div class="card-row">
+      {{ m.cover(item) }}
+      <div class="card-body">
+        {% if item.is_new_edition %}<span class="badge">New edition</span>{% endif %}
+        <h3><a href="books/{{ item.slug }}.html">{{ item.title }}{% if item.subtitle %}: {{ item.subtitle }}{% endif %}</a></h3>
+        <div class="meta">{{ item.authors|join(", ") if item.authors else "No author listed" }}</div>
+        <div class="meta">{{ item.publisher or "?" }} &middot; {{ item.published_date or "?" }} &middot; first seen {{ item.first_seen }}</div>
+        <div class="actions">{{ m.tweet_button(item) }}</div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+{% else %}
+  <p class="empty">Nothing tracked yet &mdash; run a cycle to populate this page.</p>
+{% endif %}
+</div>
+
+<script>
+(function () {
+  var checkboxes = Array.prototype.slice.call(document.querySelectorAll('.filter-tag'));
+  var allBox = document.querySelector('.filter-all');
+  var cards = Array.prototype.slice.call(document.querySelectorAll('#book-list .card'));
+
+  function apply() {
+    var active = checkboxes.filter(function (c) { return c.checked; }).map(function (c) { return c.value; });
+    if (active.length === 0) {
+      cards.forEach(function (c) { c.style.display = ''; });
+      return;
+    }
+    cards.forEach(function (c) {
+      var tags = (c.getAttribute('data-tags') || '').split(' ');
+      var match = tags.some(function (t) { return active.indexOf(t) !== -1; });
+      c.style.display = match ? '' : 'none';
+    });
+  }
+
+  allBox.addEventListener('change', function () {
+    if (allBox.checked) {
+      checkboxes.forEach(function (c) { c.checked = false; });
+      apply();
+    }
+  });
+  checkboxes.forEach(function (c) {
+    c.addEventListener('change', function () {
+      if (c.checked) allBox.checked = false;
+      apply();
+    });
+  });
+})();
+</script>
+{% endblock %}

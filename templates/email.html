@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ site_title }}</title>
+</head>
+<body style="margin:0;padding:0;background:#f4f3ef;font-family:-apple-system,'Segoe UI',Georgia,serif;color:#1c1c1a;">
+<div style="max-width:600px;margin:0 auto;padding:1.5rem 1rem;">
+
+  <h1 style="font-size:1.3rem;margin:0 0 .25rem;">{{ site_title }}</h1>
+  <p style="color:#6b6b63;font-size:.9rem;margin:0 0 1.5rem;">Monthly digest &middot; {{ run_date }}</p>
+
+  {% if new_editions %}
+  <h2 style="font-size:1rem;text-transform:uppercase;letter-spacing:.04em;color:#6b6b63;margin:1.5rem 0 .75rem;">New editions of your reference texts</h2>
+  {% for record, entry in new_editions %}
+  <table role="presentation" width="100%" style="background:#fff6e0;border:1px solid #e8c468;border-radius:10px;margin-bottom:.75rem;">
+    <tr><td style="padding:1rem 1.1rem;">
+      <div style="display:inline-block;background:#e9f3ec;color:#2f6f4f;font-size:.7rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;padding:.15rem .5rem;border-radius:999px;margin-bottom:.4rem;">New edition</div>
+      <div style="font-size:1.05rem;font-weight:600;margin-bottom:.2rem;">
+        {{ record.title }}{% if record.subtitle %}: {{ record.subtitle }}{% endif %}
+      </div>
+      <div style="color:#6b6b63;font-size:.88rem;">{{ entry.short_title }} &mdash; edition {{ record.edition }} (you have {{ entry.current_edition }})</div>
+      <div style="color:#6b6b63;font-size:.88rem;">{{ record.authors|join(", ") if record.authors else "No author listed" }} &middot; {{ record.publisher or "?" }} &middot; {{ record.published_date or "?" }}</div>
+      {% if record.url %}<div style="margin-top:.5rem;"><a href="{{ record.url }}" style="color:#2f6f4f;font-size:.88rem;">View book &rarr;</a></div>{% endif %}
+    </td></tr>
+  </table>
+  {% endfor %}
+  {% endif %}
+
+  {% if grouped_titles %}
+  <h2 style="font-size:1rem;text-transform:uppercase;letter-spacing:.04em;color:#6b6b63;margin:1.5rem 0 .75rem;">New titles</h2>
+  {% for group_name, records in grouped_titles %}
+  <div style="font-size:.85rem;font-weight:700;color:#2f6f4f;margin:1rem 0 .4rem;">{{ group_name|title }}</div>
+  {% for record in records %}
+  <table role="presentation" width="100%" style="background:#ffffff;border:1px solid #e3e1da;border-radius:10px;margin-bottom:.6rem;">
+    <tr><td style="padding:.85rem 1.1rem;">
+      <div style="font-size:1rem;font-weight:600;margin-bottom:.15rem;">
+        {{ record.title }}{% if record.subtitle %}: {{ record.subtitle }}{% endif %}
+      </div>
+      <div style="color:#6b6b63;font-size:.85rem;">{{ record.authors|join(", ") if record.authors else "No author listed" }}</div>
+      <div style="color:#6b6b63;font-size:.85rem;">{{ record.publisher or "?" }} &middot; {{ record.published_date or "?" }}</div>
+      {% if record.url %}<div style="margin-top:.4rem;"><a href="{{ record.url }}" style="color:#2f6f4f;font-size:.85rem;">View book &rarr;</a></div>{% endif %}
+    </td></tr>
+  </table>
+  {% endfor %}
+  {% endfor %}
+  {% endif %}
+
+  <p style="color:#a3a196;font-size:.78rem;margin-top:2rem;border-top:1px solid #e3e1da;padding-top:1rem;">
+    Sent by {{ site_title }}. Edit config.yaml to change keywords, sources, or unsubscribe by removing your address from email.recipients.
+    {% if site_base_url %}<br>Full site: <a href="{{ site_base_url }}" style="color:#6b6b63;">{{ site_base_url }}</a>{% endif %}
+  </p>
+
+</div>
+</body>
+</html>

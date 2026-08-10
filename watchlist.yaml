@@ -1,0 +1,55 @@
+# Reference texts you want tracked for new editions.
+#
+# `current_edition` should be the edition YOU hold, not necessarily the
+# newest one in print — the tracker flags anything newer than this number.
+# The values below were seeded from a web search on 2026-08-10 against the
+# *latest* published edition of each title, so if your copy is older, lower
+# the number to match what's on your shelf.
+#
+# Matching works on normalised title + author surname (see
+# core/edition.py:match_watchlist_entry), so title/author spelling doesn't
+# need to be exact, but keep it close.
+#
+# short_title is just a display label; it isn't used for matching.
+
+- short_title: "Kisner & Colby — Therapeutic Exercise"
+  title: "Therapeutic Exercise: Foundations and Techniques"
+  authors: ["Kisner", "Colby", "Borstad"]
+  publisher: "F.A. Davis"
+  current_edition: 8
+
+- short_title: "Magee — Orthopedic Physical Assessment"
+  title: "Orthopedic Physical Assessment"
+  authors: ["Magee", "Manske"]
+  publisher: "Elsevier"
+  current_edition: 8
+
+- short_title: "O'Sullivan & Schmitz — Physical Rehabilitation"
+  title: "Physical Rehabilitation"
+  authors: ["O'Sullivan", "Schmitz", "Fulk", "Chui"]
+  publisher: "F.A. Davis"
+  current_edition: 8
+
+- short_title: "Frontera — Essentials of Physical Medicine and Rehabilitation"
+  title: "Essentials of Physical Medicine and Rehabilitation"
+  authors: ["Frontera", "Silver", "Rizzo"]
+  publisher: "Elsevier"
+  current_edition: 4
+
+- short_title: "Brukner & Khan — Clinical Sports Medicine"
+  title: "Clinical Sports Medicine"
+  authors: ["Brukner", "Khan"]
+  publisher: "McGraw-Hill"
+  current_edition: 6
+
+- short_title: "Maitland's Vertebral Manipulation"
+  title: "Maitland's Vertebral Manipulation"
+  authors: ["Maitland", "Hengeveld", "Banks"]
+  publisher: "Elsevier"
+  current_edition: 8
+
+- short_title: "Tidy's Physiotherapy"
+  title: "Tidy's Physiotherapy"
+  authors: ["Porter"]
+  publisher: "Elsevier"
+  current_edition: 15

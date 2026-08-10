@@ -1,0 +1,16 @@
+{% macro cover(item, large=False) %}
+{% if item.cover_url %}
+<a class="cover-link" href="{{ item.share_link or item.cover_url }}" target="_blank" rel="noopener">
+  <img class="cover{% if large %} cover-large{% endif %}" src="{{ item.cover_url }}"
+       alt="Cover of {{ item.title }}" loading="lazy"
+       onerror="this.closest('.cover-link').style.display='none'">
+</a>
+{% endif %}
+{% endmacro %}
+
+{% macro tweet_button(item) %}
+<a class="tweet-btn" href="{{ item.tweet_url }}" target="_blank" rel="noopener" title="Share on X">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.3l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 4H5.6l12.1 16z"/></svg>
+  Share on X
+</a>
+{% endmacro %}

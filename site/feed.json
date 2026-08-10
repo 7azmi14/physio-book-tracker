@@ -1,0 +1,241 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "Physio Book Tracker",
+  "home_page_url": "https://example.github.io/physio-book-tracker",
+  "feed_url": "https://example.github.io/physio-book-tracker/feed.json",
+  "items": [
+    {
+      "id": "isbn13:9781003612407",
+      "url": "https://example.github.io/physio-book-tracker/books/36fe4dbc1c9e4c2d.html",
+      "title": "Trauma Rehabilitation Medicine",
+      "content_text": "John Etherington \u2014 CRC Press",
+      "date_published": "2026-08-10T00:00:00Z",
+      "tags": [
+        "general"
+      ]
+    },
+    {
+      "id": "isbn13:9780198854166",
+      "url": "https://example.github.io/physio-book-tracker/books/2625b12586842b0a.html",
+      "title": "Oxford Handbook of Sport & Exercise Medicine",
+      "content_text": "Unknown author \u2014 Oxford University PressOxford",
+      "date_published": "2026-08-10T00:00:00Z",
+      "tags": [
+        "musculoskeletal"
+      ]
+    },
+    {
+      "id": "isbn13:9781003604624",
+      "url": "https://example.github.io/physio-book-tracker/books/d88168e1bc91ea4e.html",
+      "title": "Rehabilitation Techniques for Sports Medicine and Athletic Training",
+      "content_text": "William E. Prentice, Linda Stark Bobo, Amanda Benson \u2014 Routledge",
+      "date_published": "2026-08-10T00:00:00Z",
+      "tags": [
+        "general"
+      ]
+    },
+    {
+      "id": "isbn13:9783725882663",
+      "url": "https://example.github.io/physio-book-tracker/books/2e735ef93e3adb2b.html",
+      "title": "Recent Clinical Advances in Cardiac Rehabilitation",
+      "content_text": "Unknown author \u2014 MDPI",
+      "date_published": "2026-08-10T00:00:00Z",
+      "tags": [
+        "general"
+      ]
+    },
+    {
+      "id": "isbn13:9788055723341",
+      "url": "https://example.github.io/physio-book-tracker/books/83fda0bf38fe0ae6.html",
+      "title": "2. InterRehab \u2013 Rehabilitation conference : collection of abstracts",
+      "content_text": "Unknown author \u2014 Belianum. Matej Bel University Press",
+      "date_published": "2026-08-10T00:00:00Z",
+      "tags": [
+        "clinical reasoning",
+        "musculoskeletal"
+      ]
+    },
+    {
+      "id": "isbn13:9783725879663",
+      "url": "https://example.github.io/physio-book-tracker/books/84e5f6e895919ae3.html",
+      "title": "Novel Approaches of Physical Therapy-Based Rehabilitation",
+      "content_text": "Unknown author \u2014 MDPI",
+      "date_published": "2026-08-10T00:00:00Z",
+      "tags": [
+        "general"
+      ]
+    },
+    {
+      "id": "isbn13:9789181183801",
+      "url": "https://example.github.io/physio-book-tracker/books/cf21ce6015d46140.html",
+      "title": "Individuals with cervical radiculopathy and headache or dizziness : Outcomes of physiotherapy and/or surgical treatment",
+      "content_text": "Jard Svensson \u2014 Link\u00f6ping University Electronic Press",
+      "date_published": "2026-08-10T00:00:00Z",
+      "tags": [
+        "general"
+      ]
+    },
+    {
+      "id": "isbn13:9785160214849",
+      "url": "https://example.github.io/physio-book-tracker/books/babca5bbe6176811.html",
+      "title": "Psychological intervention (development, correction and rehabilitation)",
+      "content_text": "Yuliya Karayani, Andrey Kiyko \u2014 INFRA-M Academic Publishing LLC.",
+      "date_published": "2026-08-10T00:00:00Z",
+      "tags": [
+        "general"
+      ]
+    },
+    {
+      "id": "isbn13:9781003646358",
+      "url": "https://example.github.io/physio-book-tracker/books/c3e70d5d7e45f934.html",
+      "title": "Motivational Interviewing for Rehabilitation Clinicians: Strategies for Behavior Change and Client Engagement",
+      "content_text": "Sabina Khan \u2014 Routledge",
+      "date_published": "2026-08-10T00:00:00Z",
+      "tags": [
+        "general"
+      ]
+    },
+    {
+      "id": "isbn13:9789365563993",
+      "url": "https://example.github.io/physio-book-tracker/books/826bc6030f206344.html",
+      "title": "FUNCTIONAL RECOVERY: MODERN APPROACHES TO PHYSIOTHERAPY",
+      "content_text": "Dr. DIGVIJAY SHARMA, Dr. CHANDRA SHEKHAR KUMAR \u2014 AMKCORP RESEARCH TECHNOLOGIES PRIVATE LIMITED",
+      "date_published": "2026-08-10T00:00:00Z",
+      "tags": [
+        "cardiopulmonary rehabilitation",
+        "exercise prescription",
+        "manual therapy"
+      ]
+    },
+    {
+      "id": "isbn13:9789617183955",
+      "url": "https://example.github.io/physio-book-tracker/books/3f5e3745472b73e0.html",
+      "title": "INTERNATIONAL SCIENTIFIC CONFERENCE IT\u2019S ABOUT PEOPLE 2025: PHYSIOTHERAPY AND HEALTH SCIENCES: Peer-Reviewed Proceedings Book",
+      "content_text": "Tine, ed. Kova\u010di\u010d \u2014 Alma Mater Press",
+      "date_published": "2026-08-10T00:00:00Z",
+      "tags": [
+        "general"
+      ]
+    },
+    {
+      "id": "isbn13:9781003524328",
+      "url": "https://example.github.io/physio-book-tracker/books/b40353f6248539c1.html",
+      "title": "Geriatric Rehabilitation for the Physical Therapist Assistant",
+      "content_text": "Jennifer Bottomley \u2014 Routledge",
+      "date_published": "2026-08-10T00:00:00Z",
+      "tags": [
+        "general"
+      ]
+    },
+    {
+      "id": "isbn13:9781003595601",
+      "url": "https://example.github.io/physio-book-tracker/books/858ca964198d7379.html",
+      "title": "Immersive Virtual Rehabilitation: A Clinician's Guide",
+      "content_text": "Nancy A. Baker, Joanne M. Baird, Megan E. Kenney \u2014 Routledge",
+      "date_published": "2026-08-10T00:00:00Z",
+      "tags": [
+        "general"
+      ]
+    },
+    {
+      "id": "isbn13:9783775300322",
+      "url": "https://example.github.io/physio-book-tracker/books/ab61d921cfcc36d6.html",
+      "title": "Rehabilitation der Zukunft: Zwischen Hightech, Evidenz und Empathie",
+      "content_text": "Unknown author \u2014 MWV Verlag",
+      "date_published": "2026-08-10T00:00:00Z",
+      "tags": [
+        "general"
+      ]
+    },
+    {
+      "id": "doi:10.1596/44475",
+      "url": "https://example.github.io/physio-book-tracker/books/7e3bd7a1b39d1737.html",
+      "title": "Performance-based Contracts for Road Rehabilitation and Maintenance in the State of Bahia",
+      "content_text": "Eric Lancelot, Joanna Moody, Gabriel Pereira Caldeira, Carlos Garz\u00f3n Guinea, Carlos Augusto Costa David, Anibal Coelho da Costa \u2014 Washington, DC: World Bank",
+      "date_published": "2026-08-10T00:00:00Z",
+      "tags": [
+        "general"
+      ]
+    },
+    {
+      "id": "isbn13:9781003254836",
+      "url": "https://example.github.io/physio-book-tracker/books/c9a85334747bd456.html",
+      "title": "Sports Rehabilitation and Training: Multidisciplinary Perspectives",
+      "content_text": "Richard Moss, Adam Gledhill \u2014 Routledge",
+      "date_published": "2026-08-10T00:00:00Z",
+      "tags": [
+        "general"
+      ]
+    },
+    {
+      "id": "isbn13:9781003740308",
+      "url": "https://example.github.io/physio-book-tracker/books/35eb4984ec431dac.html",
+      "title": "Psychosocial Elements of Physical Therapy: The Connection of Body to Mind",
+      "content_text": "Hannah (Johnson) Baker \u2014 Routledge",
+      "date_published": "2026-08-10T00:00:00Z",
+      "tags": [
+        "general"
+      ]
+    },
+    {
+      "id": "isbn13:9783725867455",
+      "url": "https://example.github.io/physio-book-tracker/books/ec7444b9c9d78c3b.html",
+      "title": "Symmetry Application in Motor Control in Sports and Rehabilitation",
+      "content_text": "Unknown author \u2014 MDPI",
+      "date_published": "2026-08-10T00:00:00Z",
+      "tags": [
+        "general"
+      ]
+    },
+    {
+      "id": "isbn13:9783725859429",
+      "url": "https://example.github.io/physio-book-tracker/books/5facadc8f91cfd06.html",
+      "title": "Recent Advances in Assessment and Rehabilitation of Individuals with Communication and Language Disorders",
+      "content_text": "Unknown author \u2014 MDPI",
+      "date_published": "2026-08-10T00:00:00Z",
+      "tags": [
+        "general"
+      ]
+    },
+    {
+      "id": "isbn13:9789371857901",
+      "url": "https://example.github.io/physio-book-tracker/books/5dac5be019ec8d5e.html",
+      "title": "Frozen Shoulder and Physiotherapy",
+      "content_text": "Kirupa. K, Bernard Ebenezer Cyrus, Soundarya V, T. Suganya, Pavithra D \u2014 Deep Science Publishing",
+      "date_published": "2026-08-10T00:00:00Z",
+      "tags": [
+        "general"
+      ]
+    },
+    {
+      "id": "isbn13:9781003646662",
+      "url": "https://example.github.io/physio-book-tracker/books/1dbcbb2452a4a331.html",
+      "title": "The Routledge International Handbook of Neurocognitive Rehabilitation: Practices, Innovations, and Future Directions",
+      "content_text": "K. Jayasankara Reddy \u2014 Routledge",
+      "date_published": "2026-08-10T00:00:00Z",
+      "tags": [
+        "general"
+      ]
+    },
+    {
+      "id": "isbn13:9781003741961",
+      "url": "https://example.github.io/physio-book-tracker/books/4dc04cf09f090b96.html",
+      "title": "Neural Repair, Transplantation and Rehabilitation",
+      "content_text": "Roger A. Barker, Stephen B. Dunnett \u2014 Routledge",
+      "date_published": "2026-08-10T00:00:00Z",
+      "tags": [
+        "general"
+      ]
+    },
+    {
+      "id": "isbn13:9781003749370",
+      "url": "https://example.github.io/physio-book-tracker/books/4efd38fb9c443e6c.html",
+      "title": "Cognitive Neuropsychology and Cognitive Rehabilitation",
+      "content_text": "M. J. Riddoch, G. W. Humphreys \u2014 Routledge",
+      "date_published": "2026-08-10T00:00:00Z",
+      "tags": [
+        "general"
+      ]
+    }
+  ]
+}

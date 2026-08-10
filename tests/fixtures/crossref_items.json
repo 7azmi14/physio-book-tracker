@@ -1,0 +1,33 @@
+{
+  "plain_book": {
+    "DOI": "10.1000/plain-book",
+    "type": "book",
+    "title": ["Oxford Handbook of Sport &amp; Exercise Medicine"],
+    "author": [{"given": "Jane", "family": "Doe"}],
+    "publisher": "Oxford University Press",
+    "published-print": {"date-parts": [[2026, 8, 1]]},
+    "ISBN": ["9780198854166"],
+    "subject": ["Sports Medicine"],
+    "URL": "https://doi.org/10.1000/plain-book"
+  },
+  "watchlist_new_edition": {
+    "DOI": "10.1000/magee-8e",
+    "type": "book",
+    "title": ["Orthopedic Physical Assessment"],
+    "subtitle": ["8th Edition"],
+    "edition-number": "8",
+    "author": [
+      {"given": "David J.", "family": "Magee"},
+      {"given": "Robert C.", "family": "Manske"}
+    ],
+    "publisher": "Elsevier",
+    "published-online": {"date-parts": [[2026, 4, 3]]},
+    "ISBN": ["9780443128646"]
+  },
+  "no_isbn_no_authors": {
+    "DOI": "10.1000/no-extras",
+    "type": "monograph",
+    "title": ["A Rehabilitation Monograph"],
+    "issued": {"date-parts": [[2026, 1]]}
+  }
+}

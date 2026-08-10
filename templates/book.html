@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% import "_macros.html" as m %}
+{% block title %}{{ item.title }} &mdash; {{ site_title }}{% endblock %}
+{% block content %}
+<a class="back-link" href="../index.html">&larr; Back to all books</a>
+
+<div class="book-detail">
+  <div class="card-row">
+    {{ m.cover(item, large=True) }}
+    <div class="card-body">
+      {% if item.is_new_edition %}<span class="badge">New edition</span>{% endif %}
+      <h2 style="margin-top:.5rem;">{{ item.title }}{% if item.subtitle %}: {{ item.subtitle }}{% endif %}</h2>
+
+      <dl>
+        <dt>Authors</dt><dd>{{ item.authors|join(", ") if item.authors else "Not listed" }}</dd>
+        <dt>Publisher</dt><dd>{{ item.publisher or "Unknown" }}</dd>
+        <dt>Published</dt><dd>{{ item.published_date or "Unknown" }}</dd>
+        <dt>Edition</dt><dd>{{ item.edition or "Not specified" }}</dd>
+        <dt>ISBN-13</dt><dd>{{ item.isbn13 or "Not available" }}</dd>
+        {% if item.doi %}<dt>DOI</dt><dd><a href="https://doi.org/{{ item.doi }}" target="_blank" rel="noopener">{{ item.doi }}</a></dd>{% endif %}
+        <dt>Source</dt><dd>{{ item.source }}</dd>
+        <dt>First seen</dt><dd>{{ item.first_seen }}</dd>
+        {% if item.watchlist_short_title %}<dt>Watchlist match</dt><dd>{{ item.watchlist_short_title }}</dd>{% endif %}
+        {% if item.tags %}<dt>Subspecialty</dt><dd>{{ item.tags|join(", ")|title }}</dd>{% endif %}
+      </dl>
+
+      <div class="actions">
+        {% if item.url %}<a href="{{ item.url }}" target="_blank" rel="noopener">View at publisher / source &rarr;</a>{% endif %}
+      </div>
+      <div class="actions">{{ m.tweet_button(item) }}</div>
+    </div>
+  </div>
+</div>
+{% endblock %}

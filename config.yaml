@@ -1,0 +1,77 @@
+# physio-book-tracker configuration
+# Edit freely — no code changes needed for anything in this file.
+
+# A book must match at least one include_keyword (in title, subtitle, subject
+# fields, or description) to be considered at all.
+include_keywords:
+  - physiotherapy
+  - physical therapy
+  - rehabilitation
+  - musculoskeletal
+  - neurorehabilitation
+  - manual therapy
+  - exercise prescription
+  - clinical reasoning
+  - sports physiotherapy
+  - cardiopulmonary rehabilitation
+
+# A book matching any exclude_keyword is dropped even if it also matched an
+# include_keyword above. Tune this list as you see noise in the digest.
+exclude_keywords:
+  - veterinary
+  - equine
+  - canine
+  - feline
+  - dental hygiene
+  - nursing home administration
+
+# How many days back each source should query on every run. Keep this wider
+# than the cron interval (~30 days for the monthly schedule) so a
+# slow-to-index source, a delayed Actions run, or a month with 31 days
+# doesn't cause a permanent gap — overlap is harmless because the state
+# store dedupes.
+lookback_days: 45
+
+# Toggle sources on/off without deleting their code. Only "crossref" is
+# implemented so far; the others are placeholders for later build phases.
+sources:
+  crossref:
+    enabled: true
+    # CrossRef asks polite-pool users to identify themselves with a contact
+    # URL or email in the User-Agent and/or a mailto param — keeps you off
+    # the low-priority pool. Fill in before running unattended.
+    mailto: "alharbi.abd@outlook.com"
+  google_books:
+    enabled: false
+  openlibrary:
+    enabled: false
+  springer:
+    enabled: false
+
+email:
+  enabled: false
+  recipients:
+    - alharbi.abd@outlook.com
+  # Sent via the Resend API (RESEND_API_KEY env var / GitHub Actions
+  # secret — never put the key itself in this file). "onboarding@resend.dev"
+  # is Resend's built-in test sender and works with no setup, but it can
+  # only send to the email address on your Resend account. To send to
+  # anyone else, verify your own domain in Resend and put an address on
+  # that domain here instead, e.g. "Physio Book Tracker <digest@yourdomain.com>".
+  from: "Physio Book Tracker <onboarding@resend.dev>"
+  # If nothing new was found this run, send nothing at all rather than an
+  # empty digest.
+  send_empty_digest: false
+
+site:
+  title: "Physio Book Tracker"
+  # Update this once GitHub Pages is live (Settings -> Pages will show the
+  # URL, typically https://<username>.github.io/<repo>). Used for feed.xml /
+  # feed.json item links and RSS <link> — safe to leave as a placeholder
+  # until then, it only affects those absolute links.
+  base_url: "https://example.github.io/physio-book-tracker"
+
+# Relevance score (see core/scoring.py) below which an item is discarded
+# entirely and never stored. Raise this if the digest is too noisy, lower it
+# if it's missing things.
+min_relevance_score: 2
