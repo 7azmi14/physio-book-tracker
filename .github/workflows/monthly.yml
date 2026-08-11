@@ -6,6 +6,15 @@ on:
     # minutes to hours under load; that's fine for a monthly digest.
     - cron: "0 6 1 * *"
   workflow_dispatch: {}
+  push:
+    branches: [main]
+    # Exclude the paths this workflow itself commits to — without this, its
+    # own "Update tracked books" commit would re-trigger itself in a loop.
+    # Site/template/code pushes still redeploy immediately; only the
+    # source-fetch cycle stays monthly/manual.
+    paths-ignore:
+      - "state.json"
+      - "site/**"
 
 permissions:
   contents: write   # to commit state.json + site/ back to the repo
