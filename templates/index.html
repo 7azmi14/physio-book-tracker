@@ -3,13 +3,6 @@
 {% block title %}{{ site_title }}{% endblock %}
 {% block content %}
 
-{% if actions_url %}
-<div class="update-box">
-  <a class="update-btn" href="{{ actions_url }}" target="_blank" rel="noopener">🔄 Update Me</a>
-  <p class="update-help">Opens GitHub — click "Run workflow" there to confirm, then reload this page in about a minute.</p>
-</div>
-{% endif %}
-
 {% if new_editions %}
 <h2 class="section">New editions of your reference texts</h2>
 {% for item in new_editions %}

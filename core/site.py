@@ -142,16 +142,10 @@ def build_site(
         autoescape=jinja2.select_autoescape(["html"]),
     )
     generated_at = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-    actions_url = (
-        f"https://github.com/{config.site_github_repo}/actions/workflows/monthly.yml"
-        if config.site_github_repo
-        else None
-    )
     common = {
         "site_title": config.site_title,
         "generated_at": generated_at,
         "total_known": len(items),
-        "actions_url": actions_url,
         "github_repo": config.site_github_repo or None,
         "hits_badge_url": _hits_badge_url(config),
     }
