@@ -146,7 +146,6 @@ def build_site(
         "site_title": config.site_title,
         "generated_at": generated_at,
         "total_known": len(items),
-        "github_repo": config.site_github_repo or None,
         "hits_badge_url": _hits_badge_url(config),
     }
 
