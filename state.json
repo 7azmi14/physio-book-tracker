@@ -14,7 +14,7 @@
         "edition": 3,
         "isbn13": "9780198854166",
         "published_date": "2026-08-01",
-        "publisher": "Oxford University PressOxford",
+        "publisher": "Oxford University Press, Oxford",
         "source": "crossref",
         "subjects": [],
         "subtitle": null,
@@ -28,7 +28,8 @@
       "first_seen": "2026-08-10",
       "is_new_edition": false,
       "matched_keywords": [
-        "rehabilitation"
+        "rehabilitation",
+        "sports rehabilitation"
       ],
       "record": {
         "authors": [
@@ -54,7 +55,8 @@
       "first_seen": "2026-08-10",
       "is_new_edition": false,
       "matched_keywords": [
-        "rehabilitation"
+        "rehabilitation",
+        "geriatric rehabilitation"
       ],
       "record": {
         "authors": [
@@ -106,7 +108,9 @@
       "first_seen": "2026-08-10",
       "is_new_edition": false,
       "matched_keywords": [
-        "rehabilitation"
+        "rehabilitation",
+        "sports medicine",
+        "athletic training"
       ],
       "record": {
         "authors": [
@@ -432,7 +436,8 @@
         "rehabilitation",
         "manual therapy",
         "exercise prescription",
-        "cardiopulmonary rehabilitation"
+        "cardiopulmonary rehabilitation",
+        "elderly"
       ],
       "record": {
         "authors": [

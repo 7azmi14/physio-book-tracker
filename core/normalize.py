@@ -50,6 +50,20 @@ def normalize_author_surname(author: str) -> str:
     return _WS_RE.sub(" ", surname).strip().lower()
 
 
+_CONCAT_BOUNDARY_RE = re.compile(r"(?<=[a-z])(?=[A-Z])")
+
+
+def normalize_publisher(name: str | None) -> str | None:
+    """Some CrossRef deposits concatenate the publisher name and a
+    place/imprint field with no separator (e.g. "Oxford University
+    PressOxford"). Any lowercase letter directly followed by an uppercase
+    one with no space is always such a concatenation — legitimate English
+    publisher names never do this — so insert ", " at each occurrence."""
+    if not name:
+        return name
+    return _CONCAT_BOUNDARY_RE.sub(", ", name)
+
+
 def normalize_isbn13(isbn: str | None) -> str | None:
     if not isbn:
         return None

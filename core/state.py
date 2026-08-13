@@ -11,6 +11,7 @@ from pathlib import Path
 
 from .dedupe import identity_key
 from .models import BookRecord
+from .normalize import normalize_publisher
 
 STATE_VERSION = 1
 
@@ -81,6 +82,28 @@ class StateStore:
 
     def filter_new(self, records: list[BookRecord]) -> list[BookRecord]:
         return [r for r in records if self.is_new(r)]
+
+    def retag(self, include_keywords: list[str], exclude_keywords: list[str]) -> int:
+        """Recompute matched_keywords (subspecialty tags) and clean up the
+        stored publisher name for every already-stored item using the
+        CURRENT config. Scoring normally only happens once at ingestion, so
+        editing config.yaml's keywords otherwise only affects items fetched
+        afterward — this is what makes an edit apply retroactively too.
+        Never removes or excludes items, even ones that would now score as
+        excluded; that stays a deliberate, separate operation.
+        Returns how many items actually changed."""
+        from .scoring import score_record  # local import: scoring doesn't depend on state
+
+        updated = 0
+        for entry in self.items.values():
+            record = BookRecord.from_dict(entry["record"])
+            new_matched = score_record(record, include_keywords, exclude_keywords).matched_include
+            new_publisher = normalize_publisher(record.publisher)
+            if new_matched != entry.get("matched_keywords") or new_publisher != record.publisher:
+                entry["matched_keywords"] = new_matched
+                entry["record"]["publisher"] = new_publisher
+                updated += 1
+        return updated
 
     def __len__(self) -> int:
         return len(self.items)

@@ -24,7 +24,7 @@ from core.config import Config
 from core.edition import WatchlistEntry, parse_edition
 from core.http import SourceError, get_json
 from core.models import BookRecord
-from core.normalize import normalize_isbn13
+from core.normalize import normalize_isbn13, normalize_publisher
 from .base import BaseSource
 
 logger = logging.getLogger(__name__)
@@ -133,7 +133,7 @@ def _volume_to_record(item: dict) -> BookRecord | None:
         source="google_books",
         subtitle=subtitle,
         authors=info.get("authors") or [],
-        publisher=info.get("publisher"),
+        publisher=normalize_publisher(info.get("publisher")),
         published_date=_normalize_published_date(info.get("publishedDate")),
         isbn13=_extract_isbn13(info.get("industryIdentifiers") or []),
         doi=None,

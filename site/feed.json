@@ -18,7 +18,7 @@
       "id": "isbn13:9780198854166",
       "url": "https://physio-book-tracker.pages.dev/books/2625b12586842b0a.html",
       "title": "Oxford Handbook of Sport & Exercise Medicine",
-      "content_text": "Unknown author \u2014 Oxford University PressOxford",
+      "content_text": "Unknown author \u2014 Oxford University Press, Oxford",
       "date_published": "2026-08-10T00:00:00Z",
       "tags": [
         "musculoskeletal"
@@ -31,7 +31,8 @@
       "content_text": "William E. Prentice, Linda Stark Bobo, Amanda Benson \u2014 Routledge",
       "date_published": "2026-08-10T00:00:00Z",
       "tags": [
-        "general"
+        "athletic training",
+        "sports medicine"
       ]
     },
     {
@@ -93,6 +94,7 @@
       "date_published": "2026-08-10T00:00:00Z",
       "tags": [
         "cardiopulmonary rehabilitation",
+        "elderly",
         "exercise prescription",
         "manual therapy"
       ]
@@ -114,7 +116,7 @@
       "content_text": "Jennifer Bottomley \u2014 Routledge",
       "date_published": "2026-08-10T00:00:00Z",
       "tags": [
-        "general"
+        "geriatric rehabilitation"
       ]
     },
     {
@@ -144,7 +146,7 @@
       "content_text": "Richard Moss, Adam Gledhill \u2014 Routledge",
       "date_published": "2026-08-10T00:00:00Z",
       "tags": [
-        "general"
+        "sports rehabilitation"
       ]
     },
     {

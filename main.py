@@ -68,6 +68,17 @@ def parse_args() -> argparse.Namespace:
         "--no-email", action="store_true",
         help="Skip sending the email digest even if config.yaml has email.enabled: true.",
     )
+    p.add_argument(
+        "--retag", action="store_true",
+        help=(
+            "Maintenance mode: don't fetch anything new. Instead, recompute "
+            "subspecialty tags and clean publisher names for every "
+            "already-stored item using the CURRENT config.yaml — for when "
+            "you've edited include_keywords/exclude_keywords and want that "
+            "to apply retroactively, not just to items fetched from now on. "
+            "Still rebuilds the site afterward unless --no-site is passed."
+        ),
+    )
     return p.parse_args()
 
 
@@ -204,6 +215,25 @@ def main() -> int:
     config = Config.load(args.config)
     watchlist = load_watchlist(args.watchlist)
     state = StateStore.load(args.state)
+
+    if args.retag:
+        updated = state.retag(config.include_keywords, config.exclude_keywords)
+        print(f"Retagged {updated} of {len(state)} stored items using the current config.yaml")
+        if not args.dry_run:
+            state.save()
+            print(f"State saved to {args.state}")
+        else:
+            print("(dry run — state.json not written)")
+        if not args.no_site:
+            watchlist_by_short_title = {e.short_title: e.current_edition for e in watchlist}
+            build_site(
+                state_items=state.items,
+                config=config,
+                watchlist_by_short_title=watchlist_by_short_title,
+                out_dir=args.site_dir,
+            )
+            print(f"Site regenerated at {args.site_dir} ({len(state)} pages)")
+        return 0
 
     lookback_days = args.lookback_days if args.lookback_days is not None else config.lookback_days
     since = date.today() - timedelta(days=lookback_days)

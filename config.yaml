@@ -14,10 +14,26 @@ include_keywords:
   - clinical reasoning
   - sports physiotherapy
   - cardiopulmonary rehabilitation
+  # These subspecialty terms are deliberately short/loose rather than
+  # compound phrases like "geriatric physiotherapy" — real titles almost
+  # never use that exact phrasing ("Geriatric Rehabilitation for the
+  # Physical Therapist Assistant" contains neither "geriatric
+  # rehabilitation" nor "geriatric physiotherapy" as one phrase). Loose
+  # single/short terms match how titles actually read; exclude_keywords
+  # and the other, more specific terms above still gate out noise.
   - neurological physiotherapy
+  - neuro rehabilitation
+  - stroke rehabilitation
   - pediatric physiotherapy
+  - paediatric
   - geriatric physiotherapy
+  - geriatric rehabilitation
+  - elderly
   - women's health physiotherapy
+  - pelvic health
+  - sports rehabilitation
+  - sports medicine
+  - athletic training
 
 # A book matching any exclude_keyword is dropped even if it also matched an
 # include_keyword above. Tune this list as you see noise in the digest.

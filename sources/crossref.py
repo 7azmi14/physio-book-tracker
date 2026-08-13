@@ -15,7 +15,7 @@ from core.config import Config
 from core.edition import WatchlistEntry
 from core.http import SourceError, get_json
 from core.models import BookRecord
-from core.normalize import normalize_isbn13
+from core.normalize import normalize_isbn13, normalize_publisher
 from .base import BaseSource
 
 logger = logging.getLogger(__name__)
@@ -130,7 +130,7 @@ def _item_to_record(item: dict) -> BookRecord:
         source="crossref",
         subtitle=html.unescape(subtitles[0]) if subtitles else None,
         authors=_extract_authors(item),
-        publisher=item.get("publisher"),
+        publisher=normalize_publisher(item.get("publisher")),
         published_date=_extract_date(item),
         isbn13=_extract_isbn13(item),
         doi=item.get("DOI"),
