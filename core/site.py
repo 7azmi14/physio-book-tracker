@@ -159,9 +159,19 @@ def build_site(
     (out_dir / "index.html").write_text(index_html, encoding="utf-8")
 
     book_template = env.get_template("book.html")
+    valid_filenames = set()
     for item in items:
+        filename = f"{item.slug}.html"
+        valid_filenames.add(filename)
         page_html = book_template.render(item=item, **common)
-        (out_dir / "books" / f"{item.slug}.html").write_text(page_html, encoding="utf-8")
+        (out_dir / "books" / filename).write_text(page_html, encoding="utf-8")
+
+    # Remove pages for items no longer in state (e.g. purged as out of
+    # scope) — otherwise their detail pages stay live indefinitely even
+    # after being delisted from the index.
+    for existing in (out_dir / "books").glob("*.html"):
+        if existing.name not in valid_filenames:
+            existing.unlink()
 
     _write_rss(items, config, out_dir / "feed.xml")
     _write_json_feed(items, config, out_dir / "feed.json")

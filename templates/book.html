@@ -12,7 +12,7 @@
       <h2 style="margin:0 0 .5rem;font-size:1.15rem;">{{ item.title }}{% if item.subtitle %}: {{ item.subtitle }}{% endif %}</h2>
 
       <dl>
-        <dt>Authors</dt><dd>{{ item.authors|join(", ") if item.authors else "Not listed" }}</dd>
+        {% if item.authors %}<dt>Authors</dt><dd>{{ item.authors|join(", ") }}</dd>{% endif %}
         <dt>Publisher</dt><dd>{{ item.publisher or "Unknown" }}</dd>
         <dt>Published</dt><dd>{{ item.published_date or "Unknown" }}</dd>
         <dt>Edition</dt><dd>{{ item.edition or "Not specified" }}</dd>

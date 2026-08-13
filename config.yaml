@@ -14,6 +14,10 @@ include_keywords:
   - clinical reasoning
   - sports physiotherapy
   - cardiopulmonary rehabilitation
+  - neurological physiotherapy
+  - pediatric physiotherapy
+  - geriatric physiotherapy
+  - women's health physiotherapy
 
 # A book matching any exclude_keyword is dropped even if it also matched an
 # include_keyword above. Tune this list as you see noise in the digest.
@@ -24,6 +28,23 @@ exclude_keywords:
   - feline
   - dental hygiene
   - nursing home administration
+  # "rehabilitation" alone is too broad — these catch the two literal (not
+  # clinical) senses that slipped through: infrastructure/road rehab, and
+  # speech-language pathology (a distinct discipline from physiotherapy,
+  # even though it also falls under the broader "rehabilitation" umbrella).
+  - road rehabilitation
+  - road maintenance
+  - highway
+  - pavement
+  - infrastructure
+  - communication disorders
+  - language disorders
+  - speech-language pathology
+  # general psychological/psychiatric rehabilitation, as distinct from
+  # "psychosocial elements of physical therapy"-type texts that are
+  # actually about PT practice — this one's broad enough to risk false
+  # positives, watch for that.
+  - psychological intervention
 
 # How many days back each source should query on every run. Keep this wider
 # than the cron interval (~30 days for the monthly schedule) so a
@@ -45,12 +66,16 @@ sources:
     # the low-priority pool. Fill in before running unattended.
     mailto: "alharbi.abd@outlook.com"
   google_books:
-    enabled: false
-    # Optional. Google Books works without a key at low volume. If you hit
-    # rate limits, get a key at console.cloud.google.com (enable the
-    # "Books API") — but since config.yaml is committed to the repo,
-    # leave this blank and set it via an environment variable instead if
-    # the repo is public; ask to have that wired in if you want it.
+    # Enabled: this is the source that actually catches new editions of
+    # reference texts — it queries each watchlist entry's title+author
+    # directly, unlike CrossRef's keyword search, which misses classic
+    # print textbooks (Kisner, Magee, O'Sullivan, Neumann...) because their
+    # publishers don't reliably deposit DOI metadata for them. If this
+    # keeps hitting keyless rate limits, get a free key at
+    # console.cloud.google.com (enable the "Books API") — since
+    # config.yaml is committed to the repo, set it via an environment
+    # variable instead if the repo is public; ask to have that wired in.
+    enabled: true
     api_key: ""
   openlibrary:
     enabled: false

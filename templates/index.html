@@ -11,7 +11,7 @@
   <div class="row-body">
     <h3><a href="books/{{ item.slug }}.html">{{ item.title }}{% if item.subtitle %}: {{ item.subtitle }}{% endif %}</a></h3>
     <div class="row-meta"><span class="row-tag">{{ item.watchlist_short_title }}</span> &middot; edition {{ item.edition }}, you have {{ item.watchlist_current_edition }}</div>
-    <div class="row-meta">{{ item.authors|join(", ") if item.authors else "No author listed" }} &middot; {{ item.publisher or "?" }} &middot; {{ item.published_date or "?" }}</div>
+    <div class="row-meta">{% if item.authors %}{{ item.authors|join(", ") }} &middot; {% endif %}{{ item.publisher or "?" }} &middot; {{ item.published_date or "?" }}</div>
   </div>
   {{ m.share_button(item) }}
 </div>
@@ -35,7 +35,7 @@
     {{ m.cover(item) }}
     <div class="row-body">
       <h3><a href="books/{{ item.slug }}.html">{{ item.title }}{% if item.subtitle %}: {{ item.subtitle }}{% endif %}</a></h3>
-      <div class="row-meta">{{ item.authors|join(", ") if item.authors else "No author listed" }} &middot; {{ item.publisher or "?" }} &middot; {{ item.published_date or "?" }}</div>
+      <div class="row-meta">{% if item.authors %}{{ item.authors|join(", ") }} &middot; {% endif %}{{ item.publisher or "?" }} &middot; {{ item.published_date or "?" }}</div>
     </div>
     {{ m.share_button(item) }}
   </div>

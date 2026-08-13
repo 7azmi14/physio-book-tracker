@@ -1,35 +1,5 @@
 {
   "items": {
-    "doi:10.1596/44475": {
-      "first_seen": "2026-08-10",
-      "is_new_edition": false,
-      "matched_keywords": [
-        "rehabilitation"
-      ],
-      "record": {
-        "authors": [
-          "Eric Lancelot",
-          "Joanna Moody",
-          "Gabriel Pereira Caldeira",
-          "Carlos Garz\u00f3n Guinea",
-          "Carlos Augusto Costa David",
-          "Anibal Coelho da Costa"
-        ],
-        "description": null,
-        "doi": "10.1596/44475",
-        "edition": null,
-        "isbn13": null,
-        "published_date": "2026-03-13",
-        "publisher": "Washington, DC: World Bank",
-        "source": "crossref",
-        "subjects": [],
-        "subtitle": null,
-        "title": "Performance-based Contracts for Road Rehabilitation and Maintenance in the State of Bahia",
-        "url": "https://doi.org/10.1596/44475"
-      },
-      "score": 3,
-      "watchlist_short_title": null
-    },
     "isbn13:9780198854166": {
       "first_seen": "2026-08-10",
       "is_new_edition": false,
@@ -311,29 +281,6 @@
       "score": 3,
       "watchlist_short_title": null
     },
-    "isbn13:9783725859429": {
-      "first_seen": "2026-08-10",
-      "is_new_edition": false,
-      "matched_keywords": [
-        "rehabilitation"
-      ],
-      "record": {
-        "authors": [],
-        "description": null,
-        "doi": "10.3390/books978-3-7258-5942-9",
-        "edition": null,
-        "isbn13": "9783725859429",
-        "published_date": "2026-01-16",
-        "publisher": "MDPI",
-        "source": "crossref",
-        "subjects": [],
-        "subtitle": null,
-        "title": "Recent Advances in Assessment and Rehabilitation of Individuals with Communication and Language Disorders",
-        "url": "https://doi.org/10.3390/books978-3-7258-5942-9"
-      },
-      "score": 3,
-      "watchlist_short_title": null
-    },
     "isbn13:9783725867455": {
       "first_seen": "2026-08-10",
       "is_new_edition": false,
@@ -425,32 +372,6 @@
         "url": "https://doi.org/10.32745/9783775300322"
       },
       "score": 3,
-      "watchlist_short_title": null
-    },
-    "isbn13:9785160214849": {
-      "first_seen": "2026-08-10",
-      "is_new_edition": false,
-      "matched_keywords": [
-        "rehabilitation"
-      ],
-      "record": {
-        "authors": [
-          "Yuliya Karayani",
-          "Andrey Kiyko"
-        ],
-        "description": "<jats:p>The textbook is a unique publication in terms of the vastness of the disclosed problems and the number of psychotechnologies presented, integrating modern theory and living experience of practical psychological work with military personnel and employees involved in service and combat (combat) activities, combat veterans and their family members.\r\nModern theoretical positions related to the understanding of psychological intervention are revealed, and technologies of psychological development, correction and rehabilitation, tested in developmental, psychocorrective, psychorehabilitation and readaptation practical activities, are presented.\r\nMeets the requirements of the latest generation of federal state educational standards for higher education.\r\nFor cadets and students of educational institutions of higher education, teachers, adjuncts (postgraduates), undergraduates, practical military psychologists, as well as for volunteer psychologists.</jats:p>",
-        "doi": "10.12737/2227074",
-        "edition": 0,
-        "isbn13": "9785160214849",
-        "published_date": "2026-05-14",
-        "publisher": "INFRA-M Academic Publishing LLC.",
-        "source": "crossref",
-        "subjects": [],
-        "subtitle": null,
-        "title": "Psychological intervention (development, correction and rehabilitation)",
-        "url": "https://doi.org/10.12737/2227074"
-      },
-      "score": 4,
       "watchlist_short_title": null
     },
     "isbn13:9788055723341": {

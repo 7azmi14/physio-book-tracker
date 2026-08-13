@@ -21,7 +21,7 @@
         {{ record.title }}{% if record.subtitle %}: {{ record.subtitle }}{% endif %}
       </div>
       <div style="color:#6b6b63;font-size:.88rem;">{{ entry.short_title }} &mdash; edition {{ record.edition }} (you have {{ entry.current_edition }})</div>
-      <div style="color:#6b6b63;font-size:.88rem;">{{ record.authors|join(", ") if record.authors else "No author listed" }} &middot; {{ record.publisher or "?" }} &middot; {{ record.published_date or "?" }}</div>
+      <div style="color:#6b6b63;font-size:.88rem;">{% if record.authors %}{{ record.authors|join(", ") }} &middot; {% endif %}{{ record.publisher or "?" }} &middot; {{ record.published_date or "?" }}</div>
       {% if record.url %}<div style="margin-top:.5rem;"><a href="{{ record.url }}" style="color:#2f6f4f;font-size:.88rem;">View book &rarr;</a></div>{% endif %}
     </td></tr>
   </table>
@@ -38,7 +38,7 @@
       <div style="font-size:1rem;font-weight:600;margin-bottom:.15rem;">
         {{ record.title }}{% if record.subtitle %}: {{ record.subtitle }}{% endif %}
       </div>
-      <div style="color:#6b6b63;font-size:.85rem;">{{ record.authors|join(", ") if record.authors else "No author listed" }}</div>
+      {% if record.authors %}<div style="color:#6b6b63;font-size:.85rem;">{{ record.authors|join(", ") }}</div>{% endif %}
       <div style="color:#6b6b63;font-size:.85rem;">{{ record.publisher or "?" }} &middot; {{ record.published_date or "?" }}</div>
       {% if record.url %}<div style="margin-top:.4rem;"><a href="{{ record.url }}" style="color:#2f6f4f;font-size:.85rem;">View book &rarr;</a></div>{% endif %}
     </td></tr>
