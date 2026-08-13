@@ -16,6 +16,7 @@ Docs: https://developers.google.com/books/docs/v1/using
 from __future__ import annotations
 
 import logging
+import os
 import time
 from datetime import date
 
@@ -41,7 +42,12 @@ class GoogleBooksSource(BaseSource):
         self, *, since: date, config: Config, watchlist: list[WatchlistEntry]
     ) -> list[BookRecord]:
         source_cfg = config.sources.get(self.name)
-        api_key = source_cfg.options.get("api_key") if source_cfg else None
+        # Prefer the env var (GitHub Actions secret) over config.yaml's
+        # api_key field — config.yaml is committed to the repo, so a real
+        # key belongs in a secret, not there.
+        api_key = os.environ.get("GOOGLE_BOOKS_API_KEY") or (
+            source_cfg.options.get("api_key") if source_cfg else None
+        )
 
         queries = list(SUBJECT_QUERIES)
         for entry in watchlist:

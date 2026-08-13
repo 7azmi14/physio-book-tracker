@@ -157,3 +157,37 @@ def test_fetch_continues_when_one_query_fails(monkeypatch):
     config = make_config()
     records = GoogleBooksSource().fetch(since=date(2026, 1, 1), config=config, watchlist=[])
     assert len(records) >= 1
+
+
+def test_fetch_prefers_env_var_api_key_over_config(monkeypatch):
+    captured_params = []
+
+    def fake_get_json(url, *, params, **kwargs):
+        captured_params.append(params)
+        return {"items": []}
+
+    monkeypatch.setattr(gb, "get_json", fake_get_json)
+    monkeypatch.setattr(gb, "DELAY_BETWEEN_QUERIES", 0)
+    monkeypatch.setenv("GOOGLE_BOOKS_API_KEY", "env-key")
+
+    config = make_config(api_key="config-key")
+    GoogleBooksSource().fetch(since=date(2026, 1, 1), config=config, watchlist=[])
+
+    assert all(p["key"] == "env-key" for p in captured_params)
+
+
+def test_fetch_falls_back_to_config_api_key_without_env_var(monkeypatch):
+    captured_params = []
+
+    def fake_get_json(url, *, params, **kwargs):
+        captured_params.append(params)
+        return {"items": []}
+
+    monkeypatch.setattr(gb, "get_json", fake_get_json)
+    monkeypatch.setattr(gb, "DELAY_BETWEEN_QUERIES", 0)
+    monkeypatch.delenv("GOOGLE_BOOKS_API_KEY", raising=False)
+
+    config = make_config(api_key="config-key")
+    GoogleBooksSource().fetch(since=date(2026, 1, 1), config=config, watchlist=[])
+
+    assert all(p["key"] == "config-key" for p in captured_params)

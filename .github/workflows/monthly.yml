@@ -49,6 +49,7 @@ jobs:
       - name: Run tracking cycle
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          GOOGLE_BOOKS_API_KEY: ${{ secrets.GOOGLE_BOOKS_API_KEY }}
         run: python main.py
 
       - name: Commit updated state and site

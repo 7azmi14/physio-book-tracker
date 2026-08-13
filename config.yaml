@@ -70,11 +70,11 @@ sources:
     # reference texts — it queries each watchlist entry's title+author
     # directly, unlike CrossRef's keyword search, which misses classic
     # print textbooks (Kisner, Magee, O'Sullivan, Neumann...) because their
-    # publishers don't reliably deposit DOI metadata for them. If this
-    # keeps hitting keyless rate limits, get a free key at
-    # console.cloud.google.com (enable the "Books API") — since
-    # config.yaml is committed to the repo, set it via an environment
-    # variable instead if the repo is public; ask to have that wired in.
+    # publishers don't reliably deposit DOI metadata for them. Keyless
+    # access hit a shared global quota wall, so this now runs with a real
+    # API key — stored as the GOOGLE_BOOKS_API_KEY GitHub Actions secret,
+    # NOT here, since config.yaml is committed to the public repo. The
+    # env var always wins over api_key below when both are set.
     enabled: true
     api_key: ""
   openlibrary:
