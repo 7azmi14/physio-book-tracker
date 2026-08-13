@@ -1,5 +1,30 @@
 {
   "items": {
+    "doi:10.2471/b09861": {
+      "first_seen": "2026-08-13",
+      "is_new_edition": false,
+      "matched_keywords": [
+        "paediatric"
+      ],
+      "record": {
+        "authors": [
+          "World Health Organization"
+        ],
+        "description": null,
+        "doi": "10.2471/b09861",
+        "edition": null,
+        "isbn13": null,
+        "published_date": "2026-08-03",
+        "publisher": "World Health Organization",
+        "source": "crossref",
+        "subjects": [],
+        "subtitle": null,
+        "title": "Paediatric drug optimization for sickle cell disease: meeting report, 8-10 September 2025",
+        "url": "https://doi.org/10.2471/b09861"
+      },
+      "score": 3,
+      "watchlist_short_title": null
+    },
     "isbn13:9780198854166": {
       "first_seen": "2026-08-10",
       "is_new_edition": false,
@@ -73,6 +98,32 @@
         "subtitle": null,
         "title": "Geriatric Rehabilitation for the Physical Therapist Assistant",
         "url": "https://doi.org/10.4324/9781003524328"
+      },
+      "score": 3,
+      "watchlist_short_title": null
+    },
+    "isbn13:9781003588955": {
+      "first_seen": "2026-08-13",
+      "is_new_edition": false,
+      "matched_keywords": [
+        "paediatric"
+      ],
+      "record": {
+        "authors": [
+          "Andrew Bush",
+          "Thomas Semple"
+        ],
+        "description": null,
+        "doi": "10.1201/9781003588955",
+        "edition": 1,
+        "isbn13": "9781003588955",
+        "published_date": "2026-07-15",
+        "publisher": "CRC Press",
+        "source": "crossref",
+        "subjects": [],
+        "subtitle": null,
+        "title": "Challenging Cases in Paediatric Respiratory Medicine",
+        "url": "https://doi.org/10.1201/9781003588955"
       },
       "score": 3,
       "watchlist_short_title": null
@@ -284,6 +335,34 @@
       },
       "score": 3,
       "watchlist_short_title": null
+    },
+    "isbn13:9781761000003": {
+      "first_seen": "2026-08-13",
+      "is_new_edition": false,
+      "matched_keywords": [
+        "sports medicine"
+      ],
+      "record": {
+        "authors": [
+          "Peter Brukner",
+          "Karim Khan"
+        ],
+        "description": null,
+        "doi": null,
+        "edition": 6,
+        "isbn13": "9781761000003",
+        "published_date": "2026-08-14",
+        "publisher": null,
+        "source": "google_books",
+        "subjects": [
+          "Medical"
+        ],
+        "subtitle": null,
+        "title": "Clinical Sports Medicine: Medicine of Exercise, 6th Edition",
+        "url": "http://books.google.com/books?id=z01b0QEACAAJ&dq=intitle:%22Clinical+Sports+Medicine%22+inauthor:%22Brukner%22&hl=&as_pt=BOOKS&source=gbs_api"
+      },
+      "score": 3,
+      "watchlist_short_title": "Brukner & Khan \u2014 Clinical Sports Medicine"
     },
     "isbn13:9783725867455": {
       "first_seen": "2026-08-10",

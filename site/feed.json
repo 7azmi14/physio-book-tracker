@@ -5,6 +5,36 @@
   "feed_url": "https://physio-book-tracker.pages.dev/feed.json",
   "items": [
     {
+      "id": "isbn13:9781761000003",
+      "url": "https://physio-book-tracker.pages.dev/books/bfc9c710cf68fef5.html",
+      "title": "Clinical Sports Medicine: Medicine of Exercise, 6th Edition",
+      "content_text": "Peter Brukner, Karim Khan \u2014 Unknown publisher",
+      "date_published": "2026-08-13T00:00:00Z",
+      "tags": [
+        "sports medicine"
+      ]
+    },
+    {
+      "id": "doi:10.2471/b09861",
+      "url": "https://physio-book-tracker.pages.dev/books/25497cc8e44a7adc.html",
+      "title": "Paediatric drug optimization for sickle cell disease: meeting report, 8-10 September 2025",
+      "content_text": "World Health Organization \u2014 World Health Organization",
+      "date_published": "2026-08-13T00:00:00Z",
+      "tags": [
+        "paediatric"
+      ]
+    },
+    {
+      "id": "isbn13:9781003588955",
+      "url": "https://physio-book-tracker.pages.dev/books/d6b4ca614afbfa54.html",
+      "title": "Challenging Cases in Paediatric Respiratory Medicine",
+      "content_text": "Andrew Bush, Thomas Semple \u2014 CRC Press",
+      "date_published": "2026-08-13T00:00:00Z",
+      "tags": [
+        "paediatric"
+      ]
+    },
+    {
       "id": "isbn13:9781003612407",
       "url": "https://physio-book-tracker.pages.dev/books/36fe4dbc1c9e4c2d.html",
       "title": "Trauma Rehabilitation Medicine",
