@@ -141,7 +141,11 @@ def build_site(
         loader=jinja2.FileSystemLoader(str(TEMPLATES_DIR)),
         autoescape=jinja2.select_autoescape(["html"]),
     )
-    generated_at = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    # Day granularity, not down to the minute — every run regenerates every
+    # page, so a finer clock would make every single run produce a
+    # spurious "everything changed" commit even when nothing really did,
+    # which fights with deploy-on-push (see the workflow file).
+    generated_at = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     common = {
         "site_title": config.site_title,
         "generated_at": generated_at,
@@ -179,7 +183,11 @@ def _hits_badge_url(config: Config) -> str | None:
 
 def _write_rss(items: list[SiteItem], config: Config, path: Path) -> None:
     feed_items = sorted(items, key=lambda i: i.first_seen, reverse=True)[:FEED_ITEM_LIMIT]
-    now = format_datetime(datetime.now(timezone.utc))
+    # Day granularity, same reasoning as generated_at above — a full
+    # timestamp here would make feed.xml "change" on every run regardless
+    # of whether any item actually did.
+    today_utc = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
+    now = format_datetime(today_utc)
 
     entries = []
     for item in feed_items:
