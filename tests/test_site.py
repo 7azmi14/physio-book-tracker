@@ -1,4 +1,6 @@
-from core.site import SiteItem, _hits_badge_url, _slug_for, build_site
+import json
+
+from core.site import SiteItem, _hits_badge_url, _slug_for, _write_index_json, build_site
 
 
 def make_item(**kwargs) -> SiteItem:
@@ -98,3 +100,54 @@ def test_build_site_removes_orphaned_book_pages_for_purged_items(tmp_path):
     build_site(state_items=state_items, config=FakeConfig(), watchlist_by_short_title={}, out_dir=tmp_path)
     assert (tmp_path / "books" / f"{slug_a}.html").exists()
     assert not (tmp_path / "books" / f"{slug_b}.html").exists()
+
+
+def test_write_index_json_matches_external_consumer_schema(tmp_path):
+    item = make_item(
+        key="isbn13:9780443128646",
+        title="Orthopedic Physical Assessment",
+        subtitle="8th Edition",
+        authors=["David J. Magee", "Robert C. Manske"],
+        isbn13="9780443128646",
+        doi=None,
+        published_date="2026-04-03",
+        permalink="https://physio-book-tracker.pages.dev/books/abc123.html",
+        description="A" * 500,  # long description, should get truncated
+        is_new_edition=True,
+    )
+    path = tmp_path / "index.json"
+    _write_index_json([item], path)
+    payload = json.loads(path.read_text(encoding="utf-8"))
+
+    assert len(payload) == 1
+    entry = payload[0]
+    assert entry["id"] == "isbn13:9780443128646"
+    assert entry["title"] == "Orthopedic Physical Assessment: 8th Edition"
+    assert entry["authors"] == ["David J. Magee", "Robert C. Manske"]
+    assert entry["year"] == "2026"
+    assert entry["doi"] == "9780443128646"  # falls back to ISBN when no DOI
+    assert entry["url"] == "https://physio-book-tracker.pages.dev/books/abc123.html"
+    assert len(entry["summary"]) <= 301  # 300 chars + ellipsis
+    assert entry["summary"].endswith("…")
+    assert entry["is_new_edition"] is True
+    assert "confidence" not in entry
+
+
+def test_write_index_json_handles_missing_optional_fields(tmp_path):
+    item = make_item(title="Bare Book", url=None)
+    path = tmp_path / "index.json"
+    _write_index_json([item], path)
+    entry = json.loads(path.read_text(encoding="utf-8"))[0]
+
+    assert entry["year"] is None
+    assert entry["doi"] is None
+    assert entry["summary"] is None
+    assert entry["authors"] == []
+
+
+def test_write_index_json_prefers_real_doi_over_isbn(tmp_path):
+    item = make_item(doi="10.1000/xyz", isbn13="9780443128646")
+    path = tmp_path / "index.json"
+    _write_index_json([item], path)
+    entry = json.loads(path.read_text(encoding="utf-8"))[0]
+    assert entry["doi"] == "10.1000/xyz"

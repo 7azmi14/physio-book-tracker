@@ -36,6 +36,7 @@ class SiteItem:
     url: str | None
     source: str
     first_seen: str
+    description: str | None = None
     tags: list[str] = field(default_factory=list)
     is_new_edition: bool = False
     watchlist_short_title: str | None = None
@@ -107,6 +108,7 @@ def load_items(state_items: dict[str, dict]) -> list[SiteItem]:
                 url=record.get("url"),
                 source=record.get("source") or "",
                 first_seen=entry.get("first_seen") or "",
+                description=record.get("description"),
                 tags=derive_tags(entry.get("matched_keywords") or []),
                 is_new_edition=bool(entry.get("is_new_edition")),
                 watchlist_short_title=entry.get("watchlist_short_title"),
@@ -175,6 +177,39 @@ def build_site(
 
     _write_rss(items, config, out_dir / "feed.xml")
     _write_json_feed(items, config, out_dir / "feed.json")
+    _write_index_json(items, out_dir / "index.json")
+
+
+INDEX_JSON_SUMMARY_MAX_LEN = 300
+
+
+def _write_index_json(items: list[SiteItem], path: Path) -> None:
+    """Flat catalogue export for an external read-only consumer (a
+    third-party platform pulls this file periodically; we never read
+    anything back). Schema is fixed by that consumer — id/title/url are
+    required there, everything else optional/nullable. Deliberately
+    separate from feed.json, which is a chronological JSON Feed for RSS
+    readers, not a full-catalogue export."""
+    payload = []
+    for item in items:
+        summary = item.description
+        if summary and len(summary) > INDEX_JSON_SUMMARY_MAX_LEN:
+            summary = summary[:INDEX_JSON_SUMMARY_MAX_LEN].rstrip() + "…"
+        payload.append(
+            {
+                "id": item.key,
+                "title": item.full_title,
+                "authors": item.authors,
+                "year": item.published_date[:4] if item.published_date else None,
+                # Books rarely have a DOI; ISBN-13 is the closest equivalent
+                # identifier when there's no DOI.
+                "doi": item.doi or item.isbn13,
+                "url": item.permalink,
+                "summary": summary,
+                "is_new_edition": item.is_new_edition,
+            }
+        )
+    path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
 
 def _item_url(config: Config, item: SiteItem) -> str:

@@ -1,0 +1,280 @@
+[
+  {
+    "id": "isbn13:9781761000003",
+    "title": "Clinical Sports Medicine: Medicine of Exercise, 6th Edition",
+    "authors": [
+      "Peter Brukner",
+      "Karim Khan"
+    ],
+    "year": "2026",
+    "doi": "9781761000003",
+    "url": "https://physio-book-tracker.pages.dev/books/bfc9c710cf68fef5.html",
+    "summary": null,
+    "is_new_edition": false
+  },
+  {
+    "id": "isbn13:9781003612407",
+    "title": "Trauma Rehabilitation Medicine",
+    "authors": [
+      "John Etherington"
+    ],
+    "year": "2026",
+    "doi": "10.1201/9781003612407",
+    "url": "https://physio-book-tracker.pages.dev/books/36fe4dbc1c9e4c2d.html",
+    "summary": null,
+    "is_new_edition": false
+  },
+  {
+    "id": "doi:10.2471/b09861",
+    "title": "Paediatric drug optimization for sickle cell disease: meeting report, 8-10 September 2025",
+    "authors": [
+      "World Health Organization"
+    ],
+    "year": "2026",
+    "doi": "10.2471/b09861",
+    "url": "https://physio-book-tracker.pages.dev/books/25497cc8e44a7adc.html",
+    "summary": null,
+    "is_new_edition": false
+  },
+  {
+    "id": "isbn13:9780198854166",
+    "title": "Oxford Handbook of Sport & Exercise Medicine",
+    "authors": [],
+    "year": "2026",
+    "doi": "10.1093/med/9780198854166.001.0001",
+    "url": "https://physio-book-tracker.pages.dev/books/2625b12586842b0a.html",
+    "summary": "<jats:title>Abstract</jats:title>\n                  <jats:p>The Oxford Handbook of Sport and Exercise Medicine is a comprehensive reference designed for clinicians, physiotherapists, and sports scientists involved in the care of physically active individuals. The handbook integrates evidence-based a\u2026",
+    "is_new_edition": false
+  },
+  {
+    "id": "isbn13:9781003604624",
+    "title": "Rehabilitation Techniques for Sports Medicine and Athletic Training",
+    "authors": [
+      "William E. Prentice",
+      "Linda Stark Bobo",
+      "Amanda Benson"
+    ],
+    "year": "2026",
+    "doi": "10.4324/9781003604624",
+    "url": "https://physio-book-tracker.pages.dev/books/d88168e1bc91ea4e.html",
+    "summary": null,
+    "is_new_edition": false
+  },
+  {
+    "id": "isbn13:9781003588955",
+    "title": "Challenging Cases in Paediatric Respiratory Medicine",
+    "authors": [
+      "Andrew Bush",
+      "Thomas Semple"
+    ],
+    "year": "2026",
+    "doi": "10.1201/9781003588955",
+    "url": "https://physio-book-tracker.pages.dev/books/d6b4ca614afbfa54.html",
+    "summary": null,
+    "is_new_edition": false
+  },
+  {
+    "id": "isbn13:9783725882663",
+    "title": "Recent Clinical Advances in Cardiac Rehabilitation",
+    "authors": [],
+    "year": "2026",
+    "doi": "10.3390/books978-3-7258-8266-3",
+    "url": "https://physio-book-tracker.pages.dev/books/2e735ef93e3adb2b.html",
+    "summary": null,
+    "is_new_edition": false
+  },
+  {
+    "id": "isbn13:9788055723341",
+    "title": "2. InterRehab \u2013 Rehabilitation conference : collection of abstracts",
+    "authors": [],
+    "year": "2026",
+    "doi": "10.24040/2026.9788055723341",
+    "url": "https://physio-book-tracker.pages.dev/books/83fda0bf38fe0ae6.html",
+    "summary": "<jats:p>This conference brings together a broad spectrum of topics that illustrate both the diversity and the evolving complexity of modern rehabilitation. Across today\u2019s program, we will explore musculoskeletal, neurological, behavioral, and preventive approaches to patient care, emphasizing not on\u2026",
+    "is_new_edition": false
+  },
+  {
+    "id": "isbn13:9783725879663",
+    "title": "Novel Approaches of Physical Therapy-Based Rehabilitation",
+    "authors": [],
+    "year": "2026",
+    "doi": "10.3390/books978-3-7258-7966-3",
+    "url": "https://physio-book-tracker.pages.dev/books/84e5f6e895919ae3.html",
+    "summary": null,
+    "is_new_edition": false
+  },
+  {
+    "id": "isbn13:9789181183801",
+    "title": "Individuals with cervical radiculopathy and headache or dizziness : Outcomes of physiotherapy and/or surgical treatment",
+    "authors": [
+      "Jard Svensson"
+    ],
+    "year": "2026",
+    "doi": "10.3384/9789181183818",
+    "url": "https://physio-book-tracker.pages.dev/books/cf21ce6015d46140.html",
+    "summary": null,
+    "is_new_edition": false
+  },
+  {
+    "id": "isbn13:9781003646358",
+    "title": "Motivational Interviewing for Rehabilitation Clinicians: Strategies for Behavior Change and Client Engagement",
+    "authors": [
+      "Sabina Khan"
+    ],
+    "year": "2026",
+    "doi": "10.4324/9781003646358",
+    "url": "https://physio-book-tracker.pages.dev/books/c3e70d5d7e45f934.html",
+    "summary": null,
+    "is_new_edition": false
+  },
+  {
+    "id": "isbn13:9789365563993",
+    "title": "FUNCTIONAL RECOVERY: MODERN APPROACHES TO PHYSIOTHERAPY",
+    "authors": [
+      "Dr. DIGVIJAY SHARMA",
+      "Dr. CHANDRA SHEKHAR KUMAR"
+    ],
+    "year": "2026",
+    "doi": "10.61909/amkedtb042669",
+    "url": "https://physio-book-tracker.pages.dev/books/826bc6030f206344.html",
+    "summary": "<jats:p>Functional Recovery: Modern Approaches to Physiotherapy is a comprehensive and forward-thinking guide designed to bridge the gap between traditional rehabilitation practices and modern therapeutic advancements. The book explores the evolving landscape of physiotherapy, emphasizing a function\u2026",
+    "is_new_edition": false
+  },
+  {
+    "id": "isbn13:9789617183955",
+    "title": "INTERNATIONAL SCIENTIFIC CONFERENCE IT\u2019S ABOUT PEOPLE 2025: PHYSIOTHERAPY AND HEALTH SCIENCES: Peer-Reviewed Proceedings Book",
+    "authors": [
+      "Tine, ed. Kova\u010di\u010d"
+    ],
+    "year": "2026",
+    "doi": "10.33700/7aphxk15",
+    "url": "https://physio-book-tracker.pages.dev/books/3f5e3745472b73e0.html",
+    "summary": "<jats:p>The publication INTERNATIONAL SCIENTIFIC CONFERENCE IT\u2019S ABOUT PEOPLE 2025: PHYSIOTHERAPY AND HEALTH SCIENCES: Peer-Reviewed Proceedings Book presents a peer-reviewed collection of contributions in the fields of physiotherapy and health sciences, developed within the framework of the interna\u2026",
+    "is_new_edition": false
+  },
+  {
+    "id": "isbn13:9781003524328",
+    "title": "Geriatric Rehabilitation for the Physical Therapist Assistant",
+    "authors": [
+      "Jennifer Bottomley"
+    ],
+    "year": "2026",
+    "doi": "10.4324/9781003524328",
+    "url": "https://physio-book-tracker.pages.dev/books/b40353f6248539c1.html",
+    "summary": null,
+    "is_new_edition": false
+  },
+  {
+    "id": "isbn13:9781003595601",
+    "title": "Immersive Virtual Rehabilitation: A Clinician's Guide",
+    "authors": [
+      "Nancy A. Baker",
+      "Joanne M. Baird",
+      "Megan E. Kenney"
+    ],
+    "year": "2026",
+    "doi": "10.4324/9781003595601",
+    "url": "https://physio-book-tracker.pages.dev/books/858ca964198d7379.html",
+    "summary": null,
+    "is_new_edition": false
+  },
+  {
+    "id": "isbn13:9783775300322",
+    "title": "Rehabilitation der Zukunft: Zwischen Hightech, Evidenz und Empathie",
+    "authors": [],
+    "year": "2026",
+    "doi": "10.32745/9783775300322",
+    "url": "https://physio-book-tracker.pages.dev/books/ab61d921cfcc36d6.html",
+    "summary": null,
+    "is_new_edition": false
+  },
+  {
+    "id": "isbn13:9781003254836",
+    "title": "Sports Rehabilitation and Training: Multidisciplinary Perspectives",
+    "authors": [
+      "Richard Moss",
+      "Adam Gledhill"
+    ],
+    "year": "2026",
+    "doi": "10.4324/9781003254836",
+    "url": "https://physio-book-tracker.pages.dev/books/c9a85334747bd456.html",
+    "summary": null,
+    "is_new_edition": false
+  },
+  {
+    "id": "isbn13:9781003740308",
+    "title": "Psychosocial Elements of Physical Therapy: The Connection of Body to Mind",
+    "authors": [
+      "Hannah (Johnson) Baker"
+    ],
+    "year": "2026",
+    "doi": "10.4324/9781003740308",
+    "url": "https://physio-book-tracker.pages.dev/books/35eb4984ec431dac.html",
+    "summary": null,
+    "is_new_edition": false
+  },
+  {
+    "id": "isbn13:9783725867455",
+    "title": "Symmetry Application in Motor Control in Sports and Rehabilitation",
+    "authors": [],
+    "year": "2026",
+    "doi": "10.3390/books978-3-7258-6745-5",
+    "url": "https://physio-book-tracker.pages.dev/books/ec7444b9c9d78c3b.html",
+    "summary": null,
+    "is_new_edition": false
+  },
+  {
+    "id": "isbn13:9789371857901",
+    "title": "Frozen Shoulder and Physiotherapy",
+    "authors": [
+      "Kirupa. K",
+      "Bernard Ebenezer Cyrus",
+      "Soundarya V",
+      "T. Suganya",
+      "Pavithra D"
+    ],
+    "year": "2026",
+    "doi": "10.70593/978-93-7185-790-1",
+    "url": "https://physio-book-tracker.pages.dev/books/5dac5be019ec8d5e.html",
+    "summary": null,
+    "is_new_edition": false
+  },
+  {
+    "id": "isbn13:9781003646662",
+    "title": "The Routledge International Handbook of Neurocognitive Rehabilitation: Practices, Innovations, and Future Directions",
+    "authors": [
+      "K. Jayasankara Reddy"
+    ],
+    "year": "2026",
+    "doi": "10.4324/9781003646662",
+    "url": "https://physio-book-tracker.pages.dev/books/1dbcbb2452a4a331.html",
+    "summary": null,
+    "is_new_edition": false
+  },
+  {
+    "id": "isbn13:9781003741961",
+    "title": "Neural Repair, Transplantation and Rehabilitation",
+    "authors": [
+      "Roger A. Barker",
+      "Stephen B. Dunnett"
+    ],
+    "year": "2026",
+    "doi": "10.4324/9781003741961",
+    "url": "https://physio-book-tracker.pages.dev/books/4dc04cf09f090b96.html",
+    "summary": null,
+    "is_new_edition": false
+  },
+  {
+    "id": "isbn13:9781003749370",
+    "title": "Cognitive Neuropsychology and Cognitive Rehabilitation",
+    "authors": [
+      "M. J. Riddoch",
+      "G. W. Humphreys"
+    ],
+    "year": "2026",
+    "doi": "10.4324/9781003749370",
+    "url": "https://physio-book-tracker.pages.dev/books/4efd38fb9c443e6c.html",
+    "summary": null,
+    "is_new_edition": false
+  }
+]
