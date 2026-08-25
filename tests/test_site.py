@@ -123,7 +123,7 @@ def test_write_index_json_matches_external_consumer_schema(tmp_path):
     entry = payload[0]
     assert entry["id"] == "isbn13:9780443128646"
     assert entry["title"] == "Orthopedic Physical Assessment: 8th Edition"
-    assert entry["authors"] == ["David J. Magee", "Robert C. Manske"]
+    assert entry["authors"] == "David J. Magee, Robert C. Manske"
     assert entry["year"] == "2026"
     assert entry["doi"] == "9780443128646"  # falls back to ISBN when no DOI
     assert entry["url"] == "https://physio-book-tracker.pages.dev/books/abc123.html"
@@ -141,8 +141,8 @@ def test_write_index_json_handles_missing_optional_fields(tmp_path):
 
     assert entry["year"] is None
     assert entry["doi"] is None
-    assert entry["summary"] is None
-    assert entry["authors"] == []
+    assert entry["summary"] == ""
+    assert entry["authors"] == ""
 
 
 def test_write_index_json_prefers_real_doi_over_isbn(tmp_path):

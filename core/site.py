@@ -192,14 +192,14 @@ def _write_index_json(items: list[SiteItem], path: Path) -> None:
     readers, not a full-catalogue export."""
     payload = []
     for item in items:
-        summary = item.description
-        if summary and len(summary) > INDEX_JSON_SUMMARY_MAX_LEN:
+        summary = item.description or ""
+        if len(summary) > INDEX_JSON_SUMMARY_MAX_LEN:
             summary = summary[:INDEX_JSON_SUMMARY_MAX_LEN].rstrip() + "…"
         payload.append(
             {
                 "id": item.key,
                 "title": item.full_title,
-                "authors": item.authors,
+                "authors": ", ".join(item.authors),
                 "year": item.published_date[:4] if item.published_date else None,
                 # Books rarely have a DOI; ISBN-13 is the closest equivalent
                 # identifier when there's no DOI.
